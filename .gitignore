@@ -14,4 +14,5 @@
 mkmf.log
 /generica/tmp
 /generica/log/*.log
+/generica/public/system
 /generica/vendor/assets/javascripts/bower_components
