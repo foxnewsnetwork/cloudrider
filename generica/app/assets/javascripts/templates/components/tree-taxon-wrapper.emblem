@@ -1,0 +1,3 @@
+h2.wrapper-title
+  tr-span en="browse and search"
+tree-taxon-ul taxons=rootGenuses activeTaxons=activeTaxons adminMode=adminMode

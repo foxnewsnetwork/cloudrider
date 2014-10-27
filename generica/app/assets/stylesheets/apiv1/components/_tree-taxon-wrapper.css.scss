@@ -1,0 +1,92 @@
+.tree-taxon-wrapper {
+  > .tree-taxon-ul {
+    margin-left: 0px;
+  }
+  .expanded > .taxon-interactor {
+    background-color: #008cba;
+    color: lighten(#ddd, 10%);
+  }
+  .selected > .taxon-interactor {
+    background-color: #008cba;
+    color: lighten(#ddd, 10%);
+  }
+  .taxon-interactor {
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+    background-color: #ddd;
+    &.admin-mode {
+      background-color: #43ac6a;
+      color: #ddd;
+    }
+    @media #{$small-only} {
+      padding-left: 5px;
+    }
+    @media #{$medium-only} {
+      padding-left: 10px;
+    }
+    @media #{$large-up} {
+      padding-left: 15px;
+    }
+    &:hover {
+      &:not(.admin-mode) {
+        background-color: #008cba;
+      }
+      &.admin-mode {
+        background-color: lighten(#43ac6a, 10%);
+      }
+    }
+  }
+  .tree-taxon-ul {
+    list-style: none;
+  }
+  .tree-taxon-li .tree-taxon-ul {
+    @media #{$small-only} {
+      margin-left: 5px;
+    }
+    @media #{$medium-only} {
+      margin-left: 10px;
+    }
+    @media #{$large-up} {
+      margin-left: 15px;
+    }
+  }
+  .taxon-interactor {
+    @include display-flex;
+    @include flex-direction(row);
+    @include justify-content(space-between);
+    font-size: 1.25rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .taxon-name {
+    padding-left: 10px;
+  }
+  .delete {
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+    &:hover {
+      color: #ddd;
+      background-color: darken(red, 10%);
+    }
+    color: darken(red, 10%);
+  }
+  .edit {
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+    &:hover {
+      background-color: #43ac6a;
+      a {
+        color: #ddd;
+      }
+    }
+    a {
+      color: darken(green, 5%);
+    }
+  }
+  .view {
+    @include flex-grow(3);
+  }
+}

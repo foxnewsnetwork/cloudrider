@@ -1,0 +1,23 @@
+.site-footer {
+  padding-bottom: 5rem;
+  background-color: #444;
+  width: 100%;
+  padding-top: 5rem;
+  color: #999;
+  .lang-btn {
+    width: 100%;
+  }
+  .footer-title {
+    color: #999;
+    border-bottom: 1px solid #888;
+  }
+  .select-control {
+    cursor: pointer;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .admin-btn {
+    font-weight: bold;
+  }
+}

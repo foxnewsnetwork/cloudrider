@@ -1,0 +1,105 @@
+//# ruby
+$canvas-menu-bg-color: #666;
+$menu-bar-icon-color: fade-out(#fff, 0.7);
+$nav-button-text-align: center;
+$button-horizontal-padding: 15px;
+$button-vertical-padding: 25px;
+$button-font-size: 1.25rem;
+$button-border-bottom: 1px solid darken($canvas-menu-bg-color, 10%);
+$button-default-color: #e7e7e7;
+$button-active-color: #008cba;
+$button-active-font-color: #fff;
+$button-hover-color: darken(#008cba, 10%);
+$button-hover-font-color: #fff;
+$button-font-color: invert($button-default-color);
+$canvas-menu-bg-image: url(hero-splash/seaweed.png);
+//# end
+
+.application-container {
+  @include display-flex;
+  @include justify-content(flex-start);
+  @include transition-property(left);
+  @include transition-duration(0.3s);
+  @include transition-timing-function(ease);
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  @media #{$small-only} {
+    width: 150%;
+  }
+  @media #{$medium-only} { 
+    width: 125%;
+  }
+  @media #{$large-up} {
+    width: 100%;
+    left: 0px;
+  }
+}
+.shifted {
+  @media #{$medium-only} {
+    left: -25%;
+  }
+  @media #{$small-only} {
+    left: -50%;
+  }
+}
+#canvas-menu-left {
+  @media #{$small-only} {
+    width: 50%;
+  }
+  @media #{$medium-only} {
+    width: 25%;
+  }
+  @media #{$large-up} {
+    width: 15%;
+  }
+  height: 100%;
+  background: {
+    color: $canvas-menu-bg-color;
+    image: $canvas-menu-bg-image;
+    position: left bottom;
+    size: contain;
+    repeat: no-repeat;
+  }
+}
+#page-wrapper {
+  width: 100%;
+  @media #{$large-up} {
+    width: 85%;
+  }
+  height: 100%;
+  overflow-y: auto;
+}
+.small-time-header {
+  position: absolute;
+  padding: 15px;
+  background-color: $menu-bar-icon-color;
+}
+.site-nav {
+  .nav-button {
+    width: 100%;
+    text-align: $nav-button-text-align;
+  }
+  .side-nav {
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+    margin-bottom: 0px;
+    padding-left: $button-horizontal-padding;
+    padding-right: $button-horizontal-padding;
+    padding-top: $button-vertical-padding;
+    padding-bottom: $button-vertical-padding;
+    font-size: $button-font-size;
+    color: $button-font-color;
+    border-bottom: $button-border-bottom;
+    background-color: $button-default-color;
+    &.active {
+      background-color: $button-active-color;
+      color: $button-active-font-color;
+    }
+    &:hover {
+      background-color: $button-hover-color;
+      color: $button-hover-font-color;
+    }
+  }
+}

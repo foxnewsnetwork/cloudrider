@@ -1,0 +1,9 @@
+if adminMode
+  .tree-taxon-li
+    link-to "admin.translations.new" class="taxon-interactor admin-mode"
+      .view
+        span.spacebar
+          i.fa.fa-plus
+        tr-span en="new taxon"
+each taxon in taxons
+  tree-taxon-li taxon=taxon activeTaxons=activeTaxons adminMode=adminMode

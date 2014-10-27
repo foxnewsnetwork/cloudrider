@@ -1,0 +1,22 @@
+.possible-container
+  link-to "index" (query-params anchor="") class="title-area"
+    .hide-for-medium-up
+      i.fa.fa-home
+    .company-name.show-for-medium-up <%= my_company_name %>
+
+  section.options-menu
+    link-to "index" (query-params anchor="about") class="menu-tab"
+      .hide-for-medium-up
+        i.fa.fa-info-circle
+      .menu-nav.show-for-medium-up 
+        tr-span en="about"
+    link-to "index" (query-params anchor="products") class="menu-tab"
+      .hide-for-medium-up
+        i.fa.fa-tags
+      .menu-nav.show-for-medium-up 
+        tr-span en="products"
+    link-to "index" (query-params anchor="contacts") class="menu-tab"
+      .hide-for-medium-up
+        i.fa.fa-envelope
+      .menu-nav.show-for-medium-up 
+        tr-span en="contacts"

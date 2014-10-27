@@ -1,0 +1,4 @@
+figure.media-object
+  img src="assets/california.png"
+.media-text
+  span.upcase= locale

@@ -1,0 +1,7 @@
+/# leftCanvas
+/# == partial "components/site-nav/left-nav"
+/# topBar
+== partial "components/site-nav/top-nav"
+/# topBarContained
+/# topChunks
+/# uglyBanner

@@ -1,0 +1,19 @@
+.nav-button
+  link-to "index" (query-params anchor="") class="side-nav"
+    i.fa.fa-home
+    span.capitalize.prespace <%= my_company_name %>
+.nav-button
+  link-to "index" (query-params anchor="about") class="side-nav"
+    i.fa.fa-info-circle
+    span.capitalize.prespace 
+      tr-span en="about"
+.nav-button
+  link-to "index" (query-params anchor="products") class="side-nav"
+    i.fa.fa-tags
+    span.capitalize.prespace 
+      tr-span en="products"
+.nav-button
+  link-to "index" (query-params anchor="contacts") class="side-nav"
+    i.fa.fa-envelope
+    span.capitalize.prespace 
+      tr-span en="contacts"

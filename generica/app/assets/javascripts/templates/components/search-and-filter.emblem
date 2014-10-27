@@ -1,0 +1,11 @@
+.row
+  .small-12.columns.taxons
+    tree-taxon-wrapper activeTaxons=activeTaxons taxons=taxons
+
+  .small-12.columns.query
+    .row.collapse
+      .small-10.columns
+        type-ahead data=taxons value=searchQuery name="fullName" class="full-width"
+      .small-2.columns
+        button.button.postfix click="search"
+          i.fa.fa-search

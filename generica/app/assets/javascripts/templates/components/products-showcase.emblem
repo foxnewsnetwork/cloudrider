@@ -1,0 +1,12 @@
+/# fluid-media-one 
+/# fluid-livetiles
+/# fluid-smalltiles
+/# fluid-simple-menu
+/# fluid-carousel
+/# contained-media-one
+== partial "components/products-showcase/contained-media-one"
+
+/# contained-livetiles
+/# contained-smalltiles
+/# contained-simple-menu
+/# contained-carousel

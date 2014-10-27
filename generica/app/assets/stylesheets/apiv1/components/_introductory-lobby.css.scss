@@ -1,0 +1,22 @@
+.introductory-lobby {
+  @include display-flex;
+  @include justify-content(center);
+  
+  .center-plain {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+  .container {
+    width: 1250px;
+  }
+  .about-title {
+    text-align: center;
+    text-transform: capitalize;
+    color: #333;
+  }
+  .about-abstract {
+    text-align: center;
+    padding: 15px;
+    color: #333;
+  }
+}

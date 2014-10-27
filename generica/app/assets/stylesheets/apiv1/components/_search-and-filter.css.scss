@@ -1,0 +1,9 @@
+.search-and-filter {
+  width: 100%;
+  @include display-flex;
+  @include flex-direction(row);
+  @include justify-content(center);
+  .standard-container {
+    width: 1250px;
+  }
+}

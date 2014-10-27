@@ -1,0 +1,1 @@
+class Apiv1.AdminTaxon extends DS.Model

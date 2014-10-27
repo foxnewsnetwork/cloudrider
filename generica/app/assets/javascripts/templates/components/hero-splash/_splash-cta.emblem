@@ -1,0 +1,7 @@
+.splash-cta
+  .cta-container
+    .small-12.medium-4.columns
+      link-to "index" (query-params anchor="about") class="button expand"
+        span.call-to-action.spacebar
+          tr-span en="about us"
+        i.fa.fa-caret-down

@@ -1,0 +1,12 @@
+/# center-plain
+.center-plain.container
+  .small-centered.medium-centered.large-centered.small-12.medium-9.large-6.columns
+    h1.about-title
+      tr-span en="about us"
+    p.about-abstract=loremParagraph
+/# one-by-three
+/# left-free
+/# right-free
+/# left-half
+/# right-half
+/# pentagram

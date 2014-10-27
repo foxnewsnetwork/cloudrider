@@ -1,0 +1,28 @@
+.product-container
+  .product-row
+    h4.align-right
+      link-to "products.index"
+        span.capitalize.spacebar
+          tr-span en="rest of the showcase"
+        i.fa.fa-caret-right
+
+if products.isPending
+  .contained-media-one.product-container
+    h2.capitalize.ellipsis
+      i.fa.fa-cog.fa-spin
+      tr-span en="loading..."
+else
+  each product in products
+    .contained-media-one.product-container
+      product-display product=product class="container-row product-row"
+  else
+    .contained-media-one.product-container
+      product-display class="container-row product-row"
+
+.product-post-note
+  link-to "products.index"
+    h2.after-thought
+      span.spacebar= products.length
+      span.capitalize.spacebar 
+        tr-span en="total products"
+      i.fa.fa-caret-right

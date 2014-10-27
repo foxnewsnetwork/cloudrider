@@ -1,0 +1,13 @@
+if products.isPending
+  .contained-media-one.product-container
+    h2.capitalize.ellipsis
+      i.fa.fa-cog.fa-spin
+      tr-span en="loading..."
+else
+  each product in products
+    .contained-media-one.product-container
+      product-display product=product class="container-row product-row"
+  else
+    .contained-media-one.product-container
+      product-display class="container-row product-row"
+

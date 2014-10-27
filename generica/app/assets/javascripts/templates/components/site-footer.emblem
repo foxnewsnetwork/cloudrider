@@ -1,0 +1,9 @@
+.row
+  .medium-push-2.large-push-2.large-10.medium-10.small-12.columns
+    h1.footer-title <%= my_company_tagline %>
+    .footer-divider
+    p.copyright <%= my_company_name %>. All Rights Reserved
+  .medium-pull-10.large-pull-10.large-2.medium-2.small-12.columns
+    select-locale class="lang-btn"
+    button click="displayModal 'login'" class="admin-btn button secondary expand"
+      span.capitalize admin

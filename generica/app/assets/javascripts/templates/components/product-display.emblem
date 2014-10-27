@@ -1,0 +1,27 @@
+if product
+  .media-object
+    img.product-image src=product.pictures.firstObject.picUrl
+  .media-texts
+    h2.product-title= product.material
+    p.product-summary= product.other
+    dl.product-specs
+      dt.upcase 
+        tr-span en="quantity"
+      dd
+        span.spacebar= product.amount
+      dt.upcase 
+        tr-span en="price"
+      dd
+        span= product.price
+      dt.upcase 
+        tr-span en="location"
+      dd
+        span= product.place
+else
+  .media-object.align-right
+    i.fa.fa-circle-o.fa-4x
+  .media-texts
+    h2.capitalize.ellipsis
+      tr-span en="no results"
+    p.product-summary
+      tr-span en="or perhaps there are no products to load yet"

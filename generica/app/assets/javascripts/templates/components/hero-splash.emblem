@@ -1,0 +1,13 @@
+/# static_style
+.background-container
+  == partial "components/hero-splash/splash-tagline"
+  == partial "components/hero-splash/splash-cta"
+  
+/# carousel
+
+/# vertical
+
+/# slice_and_dice
+
+/# gradient
+

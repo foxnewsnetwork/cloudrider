@@ -1,0 +1,75 @@
+/# business-cards top-and-bottom
+
+/# business-cards side-by-side
+.business-cards-side.small-12.large-6.columns
+  .row
+    .small-12.columns
+      h2.capitalize.align-right
+        tr-span en="our team"
+  .row
+    each contact in contacts
+      .small-12.medium-6.columns
+        .business-card.panel.radius
+          .text-right
+            .name.capitalize= contact.personName
+            .job= contact.employeeTitle
+
+          .text-left
+            .info
+              span.bold.capitalize.colon
+                tr-span en="email"
+              span.prespace= contact.email
+            .info
+              span.bold.capitalize.colon
+                tr-span en="phone"
+              span.prespace= contact.phoneNumber
+
+    else
+      .small-12.medium-6.columns
+        .business-card.panel.radius
+          .text-right
+            .name
+              i.fa.fa-cog.fa-spin
+              span.capitalize.prespace 
+                tr-span en="loading employees"
+            .job
+              tr-span en="or perhaps no employees have been listed"
+
+.contact-form-side.small-12.large-6.columns
+  .row
+    .small-12.columns
+      h2.capitalize.white.align-left
+        tr-span en="contact us"
+      form
+        label
+          .capitalize.white
+            span.asterisk
+            tr-span en="your company"
+          input type="text" placeholder="ex. Jack Smith"
+
+        label
+          .capitalize.white
+            span.asterisk
+            tr-span en="company email"
+          input type="email" placeholder="ex. jsmith@gmail.com"
+
+        label
+          .capitalize.white
+            span.asterisk
+            tr-span en="subject"
+          input type="text"
+          
+        label
+          .capitalize.white
+            span.asterisk
+            tr-span en="message"
+          textarea
+
+        .button-forms
+          button class="button expand"
+            span.capitalize 
+              tr-span en="submit"
+
+/# personal-blurb top-and-bottom
+
+/# personal-blurb side-by-side

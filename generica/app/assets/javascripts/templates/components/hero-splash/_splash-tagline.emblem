@@ -1,0 +1,8 @@
+.splash-tagline
+  .tagline-container
+    .small-12.medium-8.columns
+      h3.pretag 
+        tr-span en="three to four words"
+      h2.companytag My Company Inc.
+      h4.posttag 
+        tr-span en="couple more four to six words"

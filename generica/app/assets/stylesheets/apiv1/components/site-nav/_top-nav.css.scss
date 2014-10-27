@@ -1,0 +1,106 @@
+//# ruby
+$standard-container-width: 1250px;
+$standard-container-height: 75px;
+$menu-tab-width: 125px;
+$company-title-font-size: 1.35rem;
+$nav-bar-bg-color: fade-out(#444, 0.25);
+$tab-vertical-padding: 15px;
+$tab-horizontal-padding: 15px;
+$tab-border: 1px solid #666;
+$title-font-color: #eee;
+$tab-font-default-color: #333;
+$tab-bg-default-color: #e7e7e7;
+$tab-bg-active-color: #008cba;
+$tab-font-active-color: #fff;
+$tab-bg-hover-color: darken(#008cba, 10%);
+$tab-font-hover-color: invert($tab-bg-default-color);
+//# end
+.application-container,
+#canvas-menu-top,
+#page-wrapper {
+  position: absolute;
+}
+.application-container,
+#canvas-menu-top {
+  top: 0px;
+}
+.application-container,
+#page-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+#page-wrapper {
+  padding-top: $standard-container-height;
+  overflow-y: auto;
+}
+
+nav.site-nav {
+  position: fixed;
+  z-index: 9999;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  @include display-flex;
+  @include justify-content(center);
+  background: {
+    color: $nav-bar-bg-color;
+  }
+  .possible-container {
+    @include display-flex;
+    @include justify-content(space-between);
+    width: $standard-container-width;
+    height: $standard-container-height;
+  }
+  .options-menu {
+    @include display-flex;
+    @include justify-content(flex-end);
+    @include align-items(stretch);
+    width: 80%;
+    height: 100%;
+  }
+  .title-area {
+    // padding-top: $tab-vertical-padding;
+    // padding-bottom: $tab-vertical-padding;
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    padding-left: $tab-horizontal-padding;
+    font-size: $company-title-font-size;
+    color: $title-font-color;
+    width: 20%;
+    height: 100%;
+  }
+  .menu-tab {
+    // padding-top: $tab-vertical-padding;
+    // padding-bottom: $tab-vertical-padding;
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+    font-size: $company-title-font-size;
+    width: $menu-tab-width;
+    border-left: $tab-border;
+    color: $tab-font-default-color;
+    background: {
+      color: $tab-bg-default-color;
+    }
+    .menu-nav {
+      text-align: center;
+    }
+    &:last-child {
+      border-right: $tab-border;
+    }
+    &.active {
+      background-color: $tab-bg-active-color;
+      color: $tab-font-active-color;
+    }
+    &:hover {
+      background-color: $tab-bg-hover-color;
+      color: $tab-font-hover-color;
+    }
+  }
+}
