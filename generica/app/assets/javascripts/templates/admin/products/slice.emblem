@@ -1,7 +1,7 @@
 .admin-product-slice
   .actions
     .view
-      link-to "product.show" model.id
+      link-to "admin.product.edit" model.id
         i.fa.fa-eye
         span.prespace= model.material
     .edit
@@ -15,7 +15,7 @@
         span.prespace
           tr-span en="delete"
 
-  link-to "product.show" model.id class="summary"
+  link-to "admin.product.edit" model.id class="summary"
     .media-object
       img.product-image.th src=model.pictures.firstObject.picUrl
 

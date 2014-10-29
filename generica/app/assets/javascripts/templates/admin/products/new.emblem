@@ -9,6 +9,10 @@
             span.asterisk
               tr-span en="listing name"
             Ember.TextField name="material" value=model.material placeholder="hot dog"
+        .input-section attr-name="sku"
+          label.form-label
+            tr-span en="external reference number"
+            Ember.TextField name="sku" value=model.sku placeholder="XYZ-00123"
         .input-section attr-name="price"
           label.form-label
             tr-span en="how much to sell for?"
@@ -28,7 +32,7 @@
         .input-section attr-name="others"
           label.form-label
             tr-span en="anything else?"
-            Ember.TextArea name="others" value=model.otherNotes
+            Ember.TextArea name="others" value=model.others
         .input-section attr-name="files"
           label.form-label
             tr-span en="related files"

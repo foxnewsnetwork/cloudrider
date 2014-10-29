@@ -2,4 +2,8 @@ cookie-splash
 
 search-and-filter taxons=taxons action="search"
 
+fancy-paginator page=page per=per metadatum=metadatum
+
 product-catalog products=products
+
+fancy-paginator page=page per=per metadatum=metadatum

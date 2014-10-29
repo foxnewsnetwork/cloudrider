@@ -1,11 +1,3 @@
-.product-container
-  .product-row
-    h4.align-right
-      link-to "products.index"
-        span.capitalize.spacebar
-          tr-span en="rest of the showcase"
-        i.fa.fa-caret-right
-
 if products.isPending
   .contained-media-one.product-container
     h2.capitalize.ellipsis
@@ -22,7 +14,7 @@ else
 .product-post-note
   link-to "products.index"
     h2.after-thought
-      span.spacebar= products.length
+      span.spacebar= products.content.meta.count
       span.capitalize.spacebar 
         tr-span en="total products"
       i.fa.fa-caret-right
