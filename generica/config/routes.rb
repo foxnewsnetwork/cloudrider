@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   namespace :apiv1 do
     resources :products, only: [:index], controller: 'products/index'
     resources :products, only: [:show], controller: 'products/show'
+    resources :products, only: [:destroy], controller: 'products/destroy'
+    resource :product_metadatum, only: [:show], controller: 'product_metadatum/show'
+    resource :product_metadata, only: [:show], controller: 'product_metadatum/show'
     resources :pictures, only: [:show], controller: 'pictures/show'
+    resources :pictures, only: [:destroy], controller: 'pictures/destroy'
     resources :taxons, only: [:index], controller: 'taxons/index'
     resources :taxons, only: [:show], controller: 'taxons/show'
     resources :employees, only: [:show], controller: 'employees/show'
@@ -18,11 +22,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :admin_products, only: [:create], controller: 'products/create'
-    resources :admin_products, only: [:destroy], controller: 'products/destroy'
     resources :admin_products, only: [:update], controller: 'products/update'
     
-    resources :admin_employees, only: [:update], controller: 'employees/update'
-    resources :admin_employees, only: [:destroy], controller: 'employees/destroy'
     resources :admin_employees, only: [:create], controller: 'employees/create'
 
     resources :taxons, only: [:create], controller: 'taxons/create'

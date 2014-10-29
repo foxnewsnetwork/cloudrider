@@ -5,7 +5,7 @@ class Admin::ProductFactory
     @params = input_params.permit *Apiv1::Product::Fields
     @taxon_ids = _arrayify input_params[:taxons]
     @raw_attachments = _arrayify(input_params[:attachments])
-    @raw_pictures = _arrayify(input_params[:pictures])
+    @pictures_factory = Admin::PicturesFactory.new _product, input_params[:pictures]
   end
   def satisfy_specifications?
     _taxon_relationships.all?(&:valid?) && _pictures.all?(&:valid?) && _attachments.all?(&:valid?) && _product.valid?
@@ -16,13 +16,15 @@ class Admin::ProductFactory
       pictures: _pictures.map(&:to_ember_hash),
       attachments: _attachments.map(&:to_ember_hash),
       taxons: _taxons.map(&:to_ember_hash)
-    }
-    
+    } 
   end
   def error_hash
     _product.errors.to_h
   end
   private
+  def _pictures
+    @pictures_factory.pictures
+  end
   def _product
     @product ||= Apiv1::Product.new @params
   end
@@ -32,18 +34,13 @@ class Admin::ProductFactory
   def _taxons
     @taxons ||= Apiv1::Taxon.where(id: @taxon_ids)
   end
-  def _pictures
-    @pictures ||= _product.pictures.new _picture_params
-  end
   def _attachments
     @attachments ||= _product.attachments.new _attachment_params
   end
   def _taxon_params
     _taxons.map { |taxon| { taxon: taxon } }
   end
-  def _picture_params
-    @raw_pictures.map { |pic| { pic: pic } }
-  end
+  
   def _attachment_params
     @raw_attachments.map { |document| { document: document } }
   end

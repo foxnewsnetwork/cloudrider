@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe Admin::Products::CreateController do
   let(:user) { Admin::UserFactory.mock }
-  let(:create) { post :create, admin_product: @admin_product_params }
   before { controller.auto_login user }
+  let(:create) { post :create, admin_product: @admin_product_params }
   context '#create' do
     let(:taxon) { Apiv1::TaxonFactory.material }
     let(:picture) { Apiv1::PictureFactory.rack_file }

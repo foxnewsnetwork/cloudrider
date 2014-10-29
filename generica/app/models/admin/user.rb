@@ -14,7 +14,8 @@
 
 class Admin::User < ActiveRecord::Base
   authenticates_with_sorcery!
-
+  validates :email,
+    presence: true
   def to_ember_hash
     {
       id: id,

@@ -25,10 +25,7 @@ describe Admin::ProductFactory do
     specify { should eq [{ taxon: taxon }]}
   end
 
-  context '#_picture_params' do
-    subject { factory.send '_picture_params' }
-    specify { should eq [ { pic: picture } ] }
-  end
+  
 
   context '#_attachment_params' do
     subject { factory.send '_attachment_params' }

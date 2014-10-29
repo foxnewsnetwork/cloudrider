@@ -7,11 +7,7 @@ class Apiv1::Products::IndexController < Apiv1::HomeController
     _products.map &:to_ember_hash
   end
   def _meta_hash
-    {
-      page: _query_params[:page],
-      per_page: _query_params[:per],
-      products_count: _products.count
-    }
+    _products_machine.meta_hash
   end
   def _products
     _products_machine.products

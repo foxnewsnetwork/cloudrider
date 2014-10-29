@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require foundation
 //= require underscore
-//= require turbolinks
 //= require handlebars
 //= require ember
 //= require ember-data

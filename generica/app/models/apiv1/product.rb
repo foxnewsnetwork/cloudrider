@@ -16,7 +16,9 @@
 #
 
 class Apiv1::Product < ActiveRecord::Base
-  Fields = [:sku, :material, :price, :amount, :place, :others]
+  include ::Elasticsearch::Model
+  include ::Elasticsearch::Model::Callbacks
+  Fields = [:sku, :material, :price, :amount, :place, :others, :quality]
   has_many :taxon_relationships,
     class_name: 'Apiv1::Listings::TaxonRelationship',
     as: :listing
@@ -25,10 +27,12 @@ class Apiv1::Product < ActiveRecord::Base
     class_name: 'Apiv1::Taxon'
   has_many :pictures,
     class_name: 'Apiv1::Picture',
-    as: :depictable
+    as: :depictable,
+    dependent: :destroy
   has_many :attachments,
     class_name: 'Apiv1::Attachment',
-    as: :attachable
+    as: :attachable,
+    dependent: :destroy
 
   scope :belonging_to_taxon,
     -> (taxon) { joins(:taxons).where("#{Apiv1::Taxon.table_name}.id = ?", taxon.id) }

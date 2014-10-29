@@ -49,3 +49,13 @@ describe Apiv1::Product do
     specify { expect(form_taxon.listings).to include plastic }
   end
 end
+
+describe Apiv1::Product do
+  let(:product) { Apiv1::ProductFactory.new.create }
+  context 'dependent => destroy' do
+    before { product }
+    subject { -> { product.destroy } }
+    specify { should change(Apiv1::Product, :count).by -1 }
+    specify { should change(Apiv1::Picture, :count).by -2 }
+  end
+end
