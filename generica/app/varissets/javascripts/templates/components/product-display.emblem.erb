@@ -1,0 +1,51 @@
+<% case display_style %>
+<% when :media_one %>
+if product
+  .media-object
+    link-to "products.product.show" product.id
+      img.product-image src=product.pictures.firstObject.picUrl
+  .media-texts
+    h2.product-title
+      link-to "products.product.show" product.id
+        tr-span en=product.material
+        if product.sku
+          span.predash= product.sku
+    if product.others
+      p.product-summary
+        tr-span en=product.others
+    if product.attachments
+      p.related-files
+        each attachment in product.attachments
+          a href=attachment.fileUrl
+            span.spacebar= attachment.fileName
+    dl.product-specs
+      if product.amount
+        dt.upcase 
+          tr-span en="quantity"
+        dd
+          span.spacebar= product.amount
+      if product.price
+        dt.upcase 
+          tr-span en="price"
+        dd
+          span= product.price
+      if product.place
+        dt.upcase 
+          tr-span en="location"
+        dd
+          span= product.place
+      if product.quality
+        dt.upcase 
+          tr-span en="quality"
+        dd
+          span= product.quality
+else
+  .media-object.align-right
+    i.fa.fa-circle-o.fa-4x
+  .media-texts
+    h2.capitalize.ellipsis
+      tr-span en="no results"
+    p.product-summary
+      tr-span en="or perhaps there are no products to load yet"
+<% when :square_tiles %>
+<% end %>

@@ -1,0 +1,27 @@
+.product-display {
+  .media-object {
+    padding-left: 15px;
+    @media #{$small-only} {
+      width: 100%;
+    }
+    @media #{$medium-up} {
+      width: 33%;
+    }
+  }
+  .media-texts {
+    padding-left: 15px;
+    @media #{$small-only} {
+      width: 100%;
+    }
+    @media #{$medium-up} {
+      width: 66%;
+    }
+  }
+  img.product-image {
+    min-height: 275px;
+  }
+  .product-title {
+    font-size: 2rem;
+    text-transform: capitalize;
+  }
+}

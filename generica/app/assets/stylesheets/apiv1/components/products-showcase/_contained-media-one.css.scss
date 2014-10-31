@@ -17,31 +17,6 @@
     @include flex-direction(row);
     @include flex-wrap(wrap-reverse);
   }
-  .media-object {
-    padding-left: 15px;
-    @media #{$small-only} {
-      width: 100%;
-    }
-    @media #{$medium-up} {
-      width: 33%;
-    }
-  }
-  .media-texts {
-    padding-left: 15px;
-    @media #{$small-only} {
-      width: 100%;
-    }
-    @media #{$medium-up} {
-      width: 66%;
-    }
-  }
-  img.product-image {
-    min-height: 275px;
-  }
-  .product-title {
-    font-size: 2rem;
-    text-transform: capitalize;
-  }
   .product-post-note {
     @include display-flex;
     @include justify-content(center);
