@@ -30,7 +30,8 @@ class Cloudrider::ApplicationCommander
       _products_catalog,
       _products_showcase,
       _site_nav,
-      _table_booths
+      _table_booths,
+      _site_footer
     ].flatten.map { |ac| ac.new _varisset_style }.map(&:protofile)
   end
 
@@ -68,6 +69,9 @@ class Cloudrider::ApplicationCommander
   def _table_booths
     [Cloudrider::Apiv1::TableBoothsComponent, Cloudrider::Apiv1::TableBoothsSass]
   end
+  def _site_footer
+    [Cloudrider::Apiv1::SiteFooterComponent]
+  end
   def _varisset_name
     @params[:name]
   end
@@ -94,6 +98,8 @@ class Cloudrider::ApplicationCommander
       _products_catalog
     when "products-showcase"
       _products_showcase
+    when "site-footer"
+      _site_footer
     when "site-nav"
       _site_nav
     when "table-booths"
@@ -113,6 +119,7 @@ class Cloudrider::ApplicationCommander
     "products-catalog",
     "products-showcase",
     "site-nav",
+    "site-footer",
     "table-booths"
   ]
 end

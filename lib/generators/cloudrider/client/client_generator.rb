@@ -79,7 +79,6 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
       "promise-button",
       "search-and-filter",
       "select-locale",
-      "site-footer",
       "tree-taxon-li",
       "tree-taxon-ul",
       "tree-taxon-wrapper"
