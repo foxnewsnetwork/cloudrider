@@ -29,9 +29,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    animation (0.1.alpha.3)
-      compass (>= 0.12.0)
-      sass (>= 3.2.0.alpha.95)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -315,7 +312,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  animation (~> 0.1.alpha.3)
   annotate (>= 2.5.0.pre1)
   capybara (~> 2.4.4)
   coffee-rails (~> 4.0.1)

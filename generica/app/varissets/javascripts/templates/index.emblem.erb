@@ -1,0 +1,11 @@
+hero-splash
+
+<% if products_first? %>
+products-showcase id="products" products=model.products
+introductory-lobby id="about"
+<% else %>
+introductory-lobby id="about"
+products-showcase id="products" products=model.products
+<% end %>
+
+table-booths id="contacts" contacts=model.employees

@@ -1,4 +1,4 @@
-class Cloudrider::Apiv1::ApplicationSass
+class Cloudrider::Apiv1::ApplicationSass < Cloudrider::Apiv1::Base
   class Context
     def body_background_color
       '#eee'

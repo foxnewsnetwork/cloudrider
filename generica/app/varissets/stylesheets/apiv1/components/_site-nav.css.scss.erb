@@ -1,0 +1,213 @@
+<% case nav_style %>
+<% when :left %>
+//# ruby
+$canvas-menu-bg-color: #666;
+$menu-bar-icon-color: fade-out(#fff, 0.7);
+$nav-button-text-align: center;
+$button-horizontal-padding: 15px;
+$button-vertical-padding: 25px;
+$button-font-size: 1.25rem;
+$button-border-bottom: 1px solid darken($canvas-menu-bg-color, 10%);
+$button-default-color: #e7e7e7;
+$button-active-color: #008cba;
+$button-active-font-color: #fff;
+$button-hover-color: darken(#008cba, 10%);
+$button-hover-font-color: #fff;
+$button-font-color: invert($button-default-color);
+$canvas-menu-bg-image: url(hero-splash/seaweed.png);
+//# end
+.application-container {
+  @include display-flex;
+  @include justify-content(flex-start);
+  @include transition-property(left);
+  @include transition-duration(0.3s);
+  @include transition-timing-function(ease);
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  @media #{$small-only} {
+    width: 150%;
+  }
+  @media #{$medium-only} { 
+    width: 125%;
+  }
+  @media #{$large-up} {
+    width: 100%;
+    left: 0px;
+  }
+}
+.shifted {
+  @media #{$medium-only} {
+    left: -25%;
+  }
+  @media #{$small-only} {
+    left: -50%;
+  }
+}
+#canvas-menu-left {
+  @media #{$small-only} {
+    width: 50%;
+  }
+  @media #{$medium-only} {
+    width: 25%;
+  }
+  @media #{$large-up} {
+    width: 15%;
+  }
+  height: 100%;
+  background: {
+    color: $canvas-menu-bg-color;
+    image: $canvas-menu-bg-image;
+    position: left bottom;
+    size: contain;
+    repeat: no-repeat;
+  }
+}
+#page-wrapper {
+  width: 100%;
+  @media #{$large-up} {
+    width: 85%;
+  }
+  height: 100%;
+  overflow-y: auto;
+}
+.small-time-header {
+  position: absolute;
+  padding: 15px;
+  background-color: $menu-bar-icon-color;
+}
+.site-nav {
+  .nav-button {
+    width: 100%;
+    text-align: $nav-button-text-align;
+  }
+  .side-nav {
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+    margin-bottom: 0px;
+    padding-left: $button-horizontal-padding;
+    padding-right: $button-horizontal-padding;
+    padding-top: $button-vertical-padding;
+    padding-bottom: $button-vertical-padding;
+    font-size: $button-font-size;
+    color: $button-font-color;
+    border-bottom: $button-border-bottom;
+    background-color: $button-default-color;
+    &.active {
+      background-color: $button-active-color;
+      color: $button-active-font-color;
+    }
+    &:hover {
+      background-color: $button-hover-color;
+      color: $button-hover-font-color;
+    }
+  }
+}
+<% when :top %>
+//# ruby
+$standard-container-height: 75px;
+$menu-tab-width: 125px;
+$company-title-font-size: 1.35rem;
+$nav-bar-bg-color: fade-out(#444, 0.25);
+$tab-vertical-padding: 15px;
+$tab-horizontal-padding: 15px;
+$tab-border: 1px solid #666;
+$title-font-color: #eee;
+$tab-font-default-color: #333;
+$tab-bg-default-color: #e7e7e7;
+$tab-bg-active-color: #008cba;
+$tab-font-active-color: #fff;
+$tab-bg-hover-color: darken(#008cba, 10%);
+$tab-font-hover-color: invert($tab-bg-default-color);
+//# end
+.application-container,
+#canvas-menu-top,
+#page-wrapper {
+  position: absolute;
+}
+.application-container,
+#canvas-menu-top {
+  top: 0px;
+}
+.application-container,
+#page-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+#page-wrapper {
+  padding-top: $standard-container-height;
+  overflow-y: auto;
+}
+
+nav.site-nav {
+  position: fixed;
+  z-index: 9999;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  @include display-flex;
+  @include justify-content(center);
+  background: {
+    color: $nav-bar-bg-color;
+  }
+  .possible-container {
+    @include display-flex;
+    @include justify-content(space-between);
+    width: $row-width;
+    height: $standard-container-height;
+  }
+  .options-menu {
+    @include display-flex;
+    @include justify-content(flex-end);
+    @include align-items(stretch);
+    width: 80%;
+    height: 100%;
+  }
+  .title-area {
+    // padding-top: $tab-vertical-padding;
+    // padding-bottom: $tab-vertical-padding;
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    padding-left: $tab-horizontal-padding;
+    font-size: $company-title-font-size;
+    color: $title-font-color;
+    width: 20%;
+    height: 100%;
+  }
+  .menu-tab {
+    // padding-top: $tab-vertical-padding;
+    // padding-bottom: $tab-vertical-padding;
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+    font-size: $company-title-font-size;
+    width: $menu-tab-width;
+    border-left: $tab-border;
+    color: $tab-font-default-color;
+    background: {
+      color: $tab-bg-default-color;
+    }
+    .menu-nav {
+      text-align: center;
+    }
+    &:last-child {
+      border-right: $tab-border;
+    }
+    &.active {
+      background-color: $tab-bg-active-color;
+      color: $tab-font-active-color;
+    }
+    &:hover {
+      background-color: $tab-bg-hover-color;
+      color: $tab-font-hover-color;
+    }
+  }
+}
+<% end %>

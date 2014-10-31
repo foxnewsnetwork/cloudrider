@@ -1,4 +1,4 @@
-class Cloudrider::Apiv1::HeroSplashComponent
+class Cloudrider::Apiv1::HeroSplashComponent < Cloudrider::Apiv1::Base
   class Context
     def hero_style
       :static

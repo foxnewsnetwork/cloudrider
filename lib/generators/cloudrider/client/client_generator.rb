@@ -9,6 +9,7 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
     _copy_support_folders
     _copy_support_styles
     _copy_static_style_folders
+    _copy_asset_images
     _copy_static_components
     _copy_static_pages
     _copy_static_component_styles
@@ -24,18 +25,40 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
   end
 
   private
+  def _copy_asset_images
+    directory "app/assets/images", "app/assets/images"
+  end
   def _copy_config_files
     ["apiv1.js.ls", "application.js"].each do |file|
       copy_file "app/assets/javascripts/#{file}", "app/assets/javascripts/#{file}"
     end
   end
   def _copy_support_folders
-    ["adapters", "components", "config", "controllers", "helpers", "mixins", "models", "packages", "routes", "transforms"].each do |folder|
+    [
+      "adapters", 
+      "components", 
+      "config", 
+      "controllers", 
+      "helpers", 
+      "mixins", 
+      "models", 
+      "packages", 
+      "routes", 
+      "transforms", 
+      "views"
+    ].each do |folder|
       directory "app/assets/javascripts/#{folder}", "app/assets/javascripts/#{folder}"
     end
   end
   def _copy_support_styles
-    ["application.css", "apiv1.css.scss", "foundation_and_overrides.scss", "apiv1/_admin.css.scss", "apiv1/modals/_login.css.scss", "apiv1/products/product/_show.css.scss"].each do |file|
+    [
+      "application.css",
+      "apiv1.css.scss",
+      "foundation_and_overrides.scss",
+      "apiv1/_admin.css.scss",
+      "apiv1/modals/_login.css.scss",
+      "apiv1/products/product/_show.css.scss"
+    ].each do |file|
       copy_file "app/assets/stylesheets/#{file}", "app/assets/stylesheets/#{file}"
     end
   end
@@ -45,7 +68,22 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
     end
   end
   def _copy_static_components
-    ["tr-span", "fancy-paginator", "form-for", "flash-message", "block-grid-pictures", "block-picture", "flash-slice", "promise-button", "search-and-filter", "select-locale", "site-footer"].each do |component|
+    [
+      "tr-span",
+      "fancy-paginator",
+      "form-for",
+      "flash-message",
+      "block-grid-pictures",
+      "block-picture",
+      "flash-slice",
+      "promise-button",
+      "search-and-filter",
+      "select-locale",
+      "site-footer",
+      "tree-taxon-li",
+      "tree-taxon-ul",
+      "tree-taxon-wrapper"
+    ].each do |component|
       copy_file "app/assets/javascripts/templates/components/#{component}.emblem", "app/assets/javascripts/templates/components/#{component}.emblem"
     end
   end
@@ -55,7 +93,17 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
     end
   end
   def _copy_static_component_styles
-    ["block-grid-pictures", "fancy-paginator", "files-field", "flash-message", "promise-button", "search-and-filter", "select-locale", "site-footer", "type-ahead"].each do |file|
+    [
+      "block-grid-pictures",
+      "fancy-paginator",
+      "files-field",
+      "flash-message",
+      "promise-button",
+      "search-and-filter",
+      "select-locale",
+      "site-footer", 
+      "type-ahead",
+      "tree-taxon-wrapper"].each do |file|
       copy_file "app/assets/stylesheets/apiv1/components/_#{file}.css.scss", "app/assets/stylesheets/apiv1/components/_#{file}.css.scss"
     end
   end

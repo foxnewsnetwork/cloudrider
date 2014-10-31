@@ -4,6 +4,12 @@ module Cloudrider::Generators; end
 class Cloudrider::Generators::BackendGenerator < Rails::Generators::Base
   source_root File.expand_path "../../../../../generica", __FILE__
   include Rails::Generators::Migration
+  class << self
+    def next_migration_number(dirname)
+      next_migration_number = current_migration_number(dirname) + 1
+      ActiveRecord::Migration.next_migration_number(next_migration_number)
+    end
+  end
   desc "Migrates in various rubies files"
 
   def install_rubies
@@ -38,10 +44,6 @@ class Cloudrider::Generators::BackendGenerator < Rails::Generators::Base
     copy_file "public/tests/dog.png", "public/tests/dog.png"
     copy_file "config/routes.rb", "config/routes.rb"
     copy_file "config/initializers/sorcery.rb", "config/initializers/sorcery.rb"
-    append_to_file("Gemfile") { _gemfile_contents }
-  end
-  def _gemfile_contents
-    contents = File.read File.join(self.class.source_root, "Gemfile")
-    contents.gsub "source 'https://rubygems.org'\n", ""
+    copy_file "Gemfile", "Gemfile"
   end
 end
