@@ -1,11 +1,13 @@
 if product
   .media-object
-    img.product-image src=product.pictures.firstObject.picUrl
+    link-to "products.product.show" product.id
+      img.product-image src=product.pictures.firstObject.picUrl
   .media-texts
     h2.product-title
-      tr-span en=product.material
-      if product.sku
-        span.predash= product.sku
+      link-to "products.product.show" product.id
+        tr-span en=product.material
+        if product.sku
+          span.predash= product.sku
     if product.others
       p.product-summary
         tr-span en=product.others

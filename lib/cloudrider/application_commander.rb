@@ -1,31 +1,38 @@
-
+require "cloudrider/apiv1"
+require "cloudrider/protofile"
 class Cloudrider::ApplicationCommander
-  include Thor::Base
-  include Thor::Actions
   def initialize(params={})
     @params = params
   end
 
-  def write_files
-    _files_to_write.each do |file_order|
-      create_file file_order.destination, file_order.contents
-    end
+  def files_to_write
+    [_emblems, _components, _sasses].flatten
+  end
+
+  def files_to_append
+    []
   end
 
   private
-  def _files_to_write
-    _process_to_generate_file_orders.call @params
+  def _normalized_options
+    @normalized_options ||= @params
   end
-
-  def _process_to_generate_file_orders
-    _normalize_options >> _generate_file_orders
+  def _emblems
+    [Cloudrider::Apiv1::ApplicationEmblem].map(&:new).map(&:protofile)
   end
-
-  def _normalize_options
-    -> (hash) { hash }
+  def _sasses
+    [
+      Cloudrider::Apiv1::ApplicationSass,
+      Cloudrider::Apiv1::HeroSplashSass,
+      Cloudrider::Apiv1::IntroductoryLobbySass
+    ].map(&:new).map(&:protofile)
   end
-  def _generate_file_orders
-    -> (hash) { Cloudrider::FileOrdersMaker.new(hash).file_orders }
+  def _components
+    [
+      Cloudrider::Apiv1::SiteNavComponent, 
+      Cloudrider::Apiv1::HeroSplashComponent,
+      Cloudrider::Apiv1::IntroductoryLobbyComponent
+    ].map(&:new).map(&:protofile)
   end
 end
 

@@ -1,0 +1,26 @@
+.introductory-lobby {
+<% case lobby_style %>
+<% when :center_plain %>
+  @include display-flex;
+  @include justify-content(center);
+  
+  .center-plain {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+  .container {
+    width: $row-width;
+  }
+  .about-title {
+    text-align: center;
+    text-transform: capitalize;
+    color: <%= title_text_color %>;
+  }
+  .about-abstract {
+    text-align: center;
+    padding: 15px;
+    color: <%= abstract_text_color %>;
+  }
+<% when :something_else %>
+<% end %>
+}

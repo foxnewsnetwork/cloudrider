@@ -1,0 +1,25 @@
+<% case hero_style %>
+<% when :static %>
+.background-container
+  .splash-tagline
+    .tagline-container
+      .small-12.medium-8.columns
+        <% if company_pre_tagline.present? %>
+        h3.pretag 
+          tr-span en=<%= company_pre_tagline.inspect %>
+        <% end %>
+        h2.companytag= <%= my_company_name %>
+        h4.posttag 
+          tr-span en=<%= company_tagline.inspect %>
+  .splash-cta
+    .cta-container
+      .small-12.medium-4.columns
+        link-to "index" (query-params anchor="about") class="button expand"
+          span.call-to-action.spacebar
+            tr-span en="about us"
+          i.fa.fa-caret-down
+
+<% when :carousel %>
+<% when :vertical %>
+<% when :squares %>
+<% end %>

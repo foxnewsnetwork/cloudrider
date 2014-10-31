@@ -1,0 +1,42 @@
+.hero-splash {
+<% case hero_style %>
+<% when :static %>
+  .background-container {
+    @include display-flex;
+    @include justify-content(center);
+    @include flex-direction(column);
+    background: {
+      repeat: no-repeat;
+      size: cover;
+      // variable - hero-splash/*.jpg
+      image: <%= background_image_url %>;
+    }
+    // variable - *rem
+    min-height: <%= background_min_height %>;
+  }
+  .splash-tagline,
+  .splash-cta {
+    @include display-flex;
+    @include justify-content(center);
+    // variable depending upon average background color, use if bg image colors are spread apart enough
+    @include background-image(linear-gradient(to right, fade-out(<%= splash_cta_bgcolor %>, 0.4), fade-out(<%= splash_cta_bgcolor %>, 1)));
+  }
+  .splash-tagline {
+    padding-top: 10px;
+  }
+  .tagline-container,
+  .cta-container {
+    // tied to the other container width
+    // variable - *px
+    width: $row-width;
+  }
+  .companytag,
+  .pretag,
+  .posttag {
+    // variable - left, center, right
+    text-align: <%= tag_text_align %>;
+    // variable - invert color of albatross
+    color: <%= tag_text_color %>;
+  }
+<% end %>
+}

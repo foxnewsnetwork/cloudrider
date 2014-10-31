@@ -8,7 +8,6 @@
 @import 'apiv1/components/hero-splash';
 @import 'apiv1/components/introductory-lobby';
 @import 'apiv1/components/products-showcase';
-@import 'apiv1/components/products-catalog';
 @import 'apiv1/components/table-booths';
 @import 'apiv1/components/site-footer';
 @import 'apiv1/components/flash-message';
@@ -16,11 +15,10 @@
 @import 'apiv1/components/block-grid-pictures';
 @import 'apiv1/components/fancy-paginator';
 @import "apiv1/modals/login";
-@import 'apiv1/products/product/show';
 
 body {
   background: {
-    color: #eee;
+    color: <%= body_background_color %>;
   }
   overflow-x: hidden;
 }
@@ -47,7 +45,7 @@ body {
   width: 100%;
   height: 100%;
   background: {
-    color: fade-out(#000, 0.8);
+    color: <%= modal_background_color %>;
   }
 }
 

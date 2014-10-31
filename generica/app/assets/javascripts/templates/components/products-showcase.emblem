@@ -2,7 +2,7 @@
 /# fluid-livetiles
 /# fluid-smalltiles
 /# fluid-simple-menu
-/# fluid-carousel
+/# expanding-media
 /# contained-media-one
 == partial "components/products-showcase/contained-media-one"
 

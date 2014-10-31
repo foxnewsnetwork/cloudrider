@@ -1,0 +1,12 @@
+<% case lobby_style %>
+<% when :center_plain %>
+.center-plain.container
+  .small-centered.medium-centered.large-centered.small-12.medium-9.large-6.columns
+    h1.about-title
+      tr-span en="about us"
+    p.about-abstract
+  <% about_us_sentences.each do |sentence| %>
+      span.sentence
+        tr-span en=<%= sentence.inspect %>
+  <% end %>
+<% end %>

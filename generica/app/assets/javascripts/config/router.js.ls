@@ -1,8 +1,7 @@
 Apiv1.Router.map ->
   @resource "products", path: "/products", ->
-    @route "index"
-  @resource "product", path: "/product/:product_id", ->
-    @route "show"
+    @resource "products.product", path: "/product/:product_id", ->
+      @route "show"
 
   @resource "admin", path: "/admin", ->
     @resource "admin.translations", path: "/translations", ->
