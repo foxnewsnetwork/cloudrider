@@ -6,7 +6,21 @@
       tr-span en="about us"
     p.about-abstract
   <% about_us_sentences.each do |sentence| %>
-      span.sentence
+      span.sentence.spacebar
         tr-span en=<%= sentence.inspect %>
   <% end %>
+<% when :half_half %>
+.horizontal-cell
+  .row
+    .small-12.medium-6.medium-offset-5.columns.text-right
+      h1.title.capitalize
+        tr-span en="about us"
+      h3.company-bs
+        tr-span en=<%= about_us_sentences.first.inspect %>
+      p.summaries
+      <% about_us_sentences.tail.each do |sentence| %>
+        span.spacebar
+          tr-span en=<%= sentence.inspect %>
+      <% end %>
+.horizontal-cell.fishing-background
 <% end %>

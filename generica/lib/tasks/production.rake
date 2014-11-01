@@ -1,7 +1,8 @@
 namespace :production do
   desc "These tasks should be run once on a virgin fresh installation"
   task virgin: :environment do
-
+    Rake::Task["db:create"].invoke
+    Rake::Task["db:migrate"].invoke
   end
 
   desc "These tasks should be run everytime you restart the server"

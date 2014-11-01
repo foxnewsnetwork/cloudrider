@@ -21,6 +21,20 @@
     padding: 15px;
     color: <%= abstract_text_color %>;
   }
-<% when :something_else %>
+<% when :half_half %>
+  @include display-flex;
+  @include justify-content(space-between);
+  .horizontal-cell {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    width: 50%;
+  }
+  .fishing-background {
+    background: {
+      image: <%= background_image_url %>;
+      size: <%= background_image_size %>;
+      position: <%= background_image_position %>;
+    }
+  }
 <% end %>
 }

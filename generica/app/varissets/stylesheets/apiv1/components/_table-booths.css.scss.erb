@@ -24,5 +24,76 @@
   .text-left {
     padding-top: 15px;
   }
+<% when :just_cards %>
+  background: {
+    color: #777;
+  }
+  .business-cards {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .name {
+    font-size: 1.3rem;
+    color: #eee;
+    padding-bottom: 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  .job {
+    font-style: italic;
+    color: #eee;
+    text-transform: capitalize;
+  }
+  .info {
+    color: #eee;
+  }
+  .thing {
+    padding-bottom: 5px;
+  }
+  .title {
+    padding-left: 15px;
+  }
+  .mugshot {
+    width: 50px;
+  }
+  .vertical-card {
+    padding: 2rem;
+    background-color: #555;
+    &:hover {
+      background-color: darken(#008cba, 20%);
+    }
+    border: 1px solid #444;
+    color: #eee;
+    height: 200px;
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+  }
+  .media {
+    @include display-flex;
+    @include flex-direction(row);
+    @include justify-content(flex-start);
+  }
+  .call-us {
+    margin-top: 3rem;
+    color: #eee;
+    text-align: center;
+  }
+  .email-us {
+    @include transition-property(color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+    color: #eee;
+    text-decoration: underline;
+    &:hover {
+      color: ligthen(#008cba, 10%);
+    }
+  }
+  .spacebar {
+    margin-left: 15px;
+  }
 <% end %>
 }

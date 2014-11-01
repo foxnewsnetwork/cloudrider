@@ -68,4 +68,43 @@
           button class="button expand"
             span.capitalize 
               tr-span en="submit"
+<% :just_cards %>
+.business-cards
+  .row
+    each employee in employees
+      .small-6.medium-4.large-4.columns
+        a.vertical-card href=employee.emailTo
+          .media
+            .mug-shot
+              img.th.mugshot src=employee.mugUrl
+            .title
+              .name= employee.personName
+              .job= employee.employeeTitle
+          .info
+            .thing
+              span.bold.capitalize.colon
+                tr-span en="email"
+              span.prespace= employee.email
+            .thing
+              span.bold.capitalize.colon
+                tr-span en="phone"
+              span.prespace= employee.phoneNumber
+    else
+      .small-6.medium-4.large-4.columns.end
+        .vertical-card
+          .mug-shot
+            i.fa.fa-cog.fa-spin.fa-3x
+          .name
+            tr-span en="loading employees"
+          .job
+            tr-span en="or perhaps you don't have employees yet"
+
+  .row
+    .small-12.columns
+      h3.call-us
+        tr-span en=<%= contact_us_call_to_action.inspect %>
+        span.spacebar
+          a.email-us href="mailto:<%= main_contact_email %>"
+            tr-span en="send us an email"
+            span.prespace <%= main_contact_email %>
 <% end %>
