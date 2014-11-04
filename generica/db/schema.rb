@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20141021003734) do
     t.string   "employee_title"
     t.string   "email"
     t.string   "phone_number"
-    t.integer  "picture_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,22 +58,6 @@ ActiveRecord::Schema.define(version: 20141021003734) do
 
   add_index "apiv1_listings_taxons", ["listing_id", "listing_type"], name: "index_apiv1_listings_taxons_on_listing_id_and_listing_type", using: :btree
   add_index "apiv1_listings_taxons", ["taxon_id"], name: "index_apiv1_listings_taxons_on_taxon_id", using: :btree
-
-  create_table "apiv1_offers", force: true do |t|
-    t.integer  "listing_id"
-    t.string   "listing_type"
-    t.decimal  "price",         precision: 17, scale: 4
-    t.string   "price_unit"
-    t.string   "incoterm"
-    t.string   "location_name"
-    t.string   "buyer_company"
-    t.string   "buyer_email"
-    t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "apiv1_offers", ["listing_id", "listing_type"], name: "index_apiv1_offers_on_listing_id_and_listing_type", using: :btree
 
   create_table "apiv1_pictures", force: true do |t|
     t.integer  "depictable_id"
@@ -120,9 +103,11 @@ ActiveRecord::Schema.define(version: 20141021003734) do
   add_index "apiv1_taxons", ["permalink", "root_genus"], name: "index_apiv1_taxons_on_permalink_and_root_genus", unique: true, using: :btree
 
   create_table "apiv1_translations", force: true do |t|
-    t.string   "locale",          null: false
-    t.string   "key",             null: false
-    t.string   "translated_text"
+    t.string   "locale",                         null: false
+    t.string   "key",                            null: false
+    t.text     "value"
+    t.text     "interpolations"
+    t.boolean  "is_proc",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

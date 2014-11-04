@@ -1,6 +1,16 @@
 # Cloudrider
 
-TODO: Write a gem description
+FUTURE TODO:
+switch I18n translations to a key-value storage basis with a redis cluster
+
+Questions that lead to building a website
+1. What is your company's name
+2. Give me some taglines / slogans for your company
+3. Tell me about your company
+4. How would a customer contact your company?
+5. Give me some showcase pictures of your company
+
+
 
 ## Installation
 

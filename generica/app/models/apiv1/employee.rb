@@ -7,7 +7,6 @@
 #  employee_title :string(255)
 #  email          :string(255)
 #  phone_number   :string(255)
-#  picture_id     :integer
 #  created_at     :datetime
 #  updated_at     :datetime
 #

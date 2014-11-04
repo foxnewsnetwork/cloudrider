@@ -5,10 +5,10 @@ class Cloudrider::Apiv1::Base
     @style = style
   end
   def protofile
-  Cloudrider::Protofile.new.tap do |p|
-    p.file_name = _file_name
-    p.folder = _folder
-    p.renderer = _renderer
+    Cloudrider::Protofile.new.tap do |p|
+      p.file_name = _file_name
+      p.folder = _folder
+      p.renderer = _renderer
     end
   end
   private
