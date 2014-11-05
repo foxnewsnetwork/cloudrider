@@ -24,6 +24,14 @@
       i.fa.fa-times
       tr-span en="delete"
 
+if adminMode
+  .new-child-taxon
+    link-to "admin.taxons.new" (query-params parent=taxon.id) class="taxon-interactor admin-mode"
+      .view
+        span.spacebar
+          i.fa.fa-plus
+        tr-span en="new child category"
+
 if taxon.hasChildren
-  span class=isExpanded:visible:hidden
-    tree-taxon-ul taxons=taxon.children activeTaxons=activeTaxons adminMode=adminMode
+  if isExpanded
+    tree-taxon-ul rootTaxon=taxon activeTaxons=activeTaxons adminMode=adminMode

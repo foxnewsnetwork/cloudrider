@@ -27,3 +27,6 @@ Apiv1.Router.map ->
       @route "new"
     @resource "admin.employee", path: "/employee/:employee_id", ->
       @route "edit"
+
+    @resource "admin.messages", path: "/messages", ->
+      @route "index"

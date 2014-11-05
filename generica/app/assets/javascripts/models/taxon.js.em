@@ -1,17 +1,15 @@
 class Apiv1.Taxon extends DS.Model
+  permalink: DS.attr "string"
   rootGenus: DS.attr "string"
   taxonName: DS.attr "string"
-  permalink: DS.attr "string"
   explanation: DS.attr "string"
+  parentId: DS.attr "string"
   firstChildAt: DS.attr "date"
   createdAt: DS.attr "date"
   updatedAt: DS.attr "date"
-  parentId: DS.attr "string"
 
   +computed id
-  children: -> 
-    @store.filter "taxon", (taxon) =>
-      taxon.get("parentId") is @id
+  children: -> @store.find "taxon", parent_id: @id
 
   +computed parentId
   parent: -> @parentId && @store.find("taxon", @parentId)

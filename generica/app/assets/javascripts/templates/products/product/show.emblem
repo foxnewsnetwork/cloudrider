@@ -40,6 +40,12 @@
                 tr-span en="quality"
               dd
                 span= product.quality
+      if product.taxons
+        .row
+          .small-12.columns
+            .taxon-tags
+              each taxon in product.taxons
+                span.tag= taxon.taxonName
       if product.others
         .row
           .small-12.columns

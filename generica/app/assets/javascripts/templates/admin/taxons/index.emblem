@@ -3,7 +3,7 @@
     link-to "admin.taxons.new" class="button expand success"
       span.spacebar
         i.fa.fa-plus
-      tr-span en="new taxon"
+      tr-span en="new category"
 
 .row
   .small-12.columns.taxons

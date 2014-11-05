@@ -6,14 +6,15 @@
 #  parent_id      :integer
 #  root_genus     :string(255)      not null
 #  taxon_name     :string(255)      not null
-#  permalink      :string(255)      not null
 #  explanation    :string(255)
+#  permalink      :string(255)      not null
 #  first_child_at :datetime
 #  created_at     :datetime
 #  updated_at     :datetime
 #
 
 class Apiv1::Taxon < ActiveRecord::Base
+  Fields = [:taxon_name, :explanation, :parent_id]
   class << self
     def find_by_permalink_genus(str, genus)
       permalink = Apiv1::Permalinkifier.permalinkify str
@@ -40,7 +41,8 @@ class Apiv1::Taxon < ActiveRecord::Base
     class_name: 'Apiv1::Taxon',
     foreign_key: 'parent_id'
 
-  before_validation :_create_permalink 
+  before_validation :_create_permalink,
+    :_create_root_genus
   before_create :_inform_parent
 
   validates :root_genus,
@@ -81,6 +83,10 @@ class Apiv1::Taxon < ActiveRecord::Base
   private
   def _create_permalink
     self.permalink ||= Apiv1::Permalinkifier.permalinkify taxon_name
+  end
+  def _create_root_genus
+    self.root_genus ||= parent.try :root_genus
+    self.root_genus ||= Apiv1::Permalinkifier.permalinkify taxon_name
   end
   def _inform_parent
     parent.try :have_first_child!

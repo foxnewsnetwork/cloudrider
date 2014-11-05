@@ -1,9 +1,8 @@
-if adminMode
+if rootTaxon.children.isPending
   .tree-taxon-li
-    link-to "admin.translations.new" class="taxon-interactor admin-mode"
-      .view
-        span.spacebar
-          i.fa.fa-plus
-        tr-span en="new taxon"
-each taxon in taxons
+    .view
+      span.spacebar
+        i.fa.fa-spin.fa-cog
+      tr-span en="loading"        
+each taxon in rootTaxon.children
   tree-taxon-li taxon=taxon activeTaxons=activeTaxons adminMode=adminMode

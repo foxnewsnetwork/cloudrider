@@ -16,25 +16,28 @@
     @include transition-timing-function(ease-out);
     background-color: #ddd;
     &.admin-mode {
-      background-color: #43ac6a;
-      color: #ddd;
+      color: #333;
     }
-    @media #{$small-only} {
-      padding-left: 5px;
-    }
-    @media #{$medium-only} {
-      padding-left: 10px;
-    }
-    @media #{$large-up} {
-      padding-left: 15px;
-    }
+    
     &:hover {
       &:not(.admin-mode) {
         background-color: #008cba;
       }
       &.admin-mode {
-        background-color: lighten(#43ac6a, 10%);
+        background-color: darken(#43ac6a, 10%);
+        color: #eee;
       }
+    }
+  }
+  .new-child-taxon {
+    @media #{$small-only} {
+      margin-left: 5px;
+    }
+    @media #{$medium-only} {
+      margin-left: 10px;
+    }
+    @media #{$large-up} {
+      margin-left: 15px;
     }
   }
   .tree-taxon-ul {
@@ -56,8 +59,7 @@
     @include flex-direction(row);
     @include justify-content(space-between);
     font-size: 1.25rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
+
   }
   .taxon-name {
     padding-left: 10px;
@@ -70,7 +72,7 @@
       color: #ddd;
       background-color: darken(red, 10%);
     }
-    color: darken(red, 10%);
+    color: darken(red, 10%);padding-right: 15px;
   }
   .edit {
     @include transition-property(background-color);
@@ -86,7 +88,22 @@
       color: darken(green, 5%);
     }
   }
-  .view {
-    @include flex-grow(3);
+  .view,
+  .edit,
+  .delete {
+    @media #{$small-only} {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    @media #{$medium-only} {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    @media #{$large-up} {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }

@@ -67,6 +67,9 @@ class Apiv1::Translation < ActiveRecord::Base
   def to_ember_hash
     { id: id, locale: locale, key: key, translated_text: translated_text }
   end
+  def tl_hash
+    { key => translated_text }
+  end
 
   def as_indexed_json(options={})
     {

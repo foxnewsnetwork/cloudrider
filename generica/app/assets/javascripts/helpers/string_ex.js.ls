@@ -1,6 +1,6 @@
 class Apiv1.StringEx
   @keyify = (s) ->
-    s 
+    (s || "")
     |> ( .trim! ) 
     |> Apiv1.StringEx.wordify-comma
     |> Apiv1.StringEx.wordify-period

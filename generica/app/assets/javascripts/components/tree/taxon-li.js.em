@@ -39,6 +39,9 @@ class Apiv1.TreeTaxonLiComponent extends Ember.Component
     @isSelected = true
 
   actions:
+    killTaxon: ->
+      @taxon.destroyRecord().then -> Apiv1.Flash.register "success", "taxon destroyed", 2000
+
     interactWithTaxon: ->
       if @taxon.hasChildren
         @toggleExpansion()

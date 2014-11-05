@@ -1,2 +1,2 @@
 class Apiv1.AdminTaxonsIndexRoute extends Ember.Route
-  model: -> @store.find "taxon"
+  model: -> @store.find "taxon", parent_id: null
