@@ -16,6 +16,6 @@ class Apiv1::Products::IndexController < Apiv1::HomeController
     @products_machine ||= Apiv1::ProductsMachine.new _query_params
   end
   def _query_params
-    params.permit(:page, :per, :query).merge taxons: params[:taxons]
+    params.permit(:page, :per, :query, :order).merge taxons: params[:taxons]
   end
 end

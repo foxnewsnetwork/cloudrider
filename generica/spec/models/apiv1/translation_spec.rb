@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: apiv1_translations
+#
+#  id             :integer          not null, primary key
+#  locale         :string(255)      not null
+#  key            :string(255)      not null
+#  value          :text
+#  interpolations :text
+#  is_proc        :boolean          default(FALSE)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
 require 'rails_helper'
 
 describe Apiv1::Translation do

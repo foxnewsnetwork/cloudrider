@@ -1,3 +1,9 @@
+.row
+  .small-6.medium-4.large-2.columns.end
+    link-to "admin.products.index" class="button expand secondary"
+      i.fa.fa-chevron-left
+      span.capitalize.bold 
+        tr-span en="back"
 .row.admin-products-new
   .small-12.columns
     form-for errors=failureReason submit="formSubmitted"
@@ -33,6 +39,12 @@
           label.form-label
             tr-span en="anything else?"
             Ember.TextArea name="others" value=model.others
+        .input-section attr-name="showcaseOrder"
+          label.form-label
+            tr-span en="showcase display number"
+            span.parantheses
+              tr-span en="the smaller the number, the higher up it appears in the showcase on the front page"
+            Ember.TextField type="number" name="showcaseOrder" value=model.showcaseOrder
         .input-section attr-name="files"
           label.form-label
             tr-span en="related files"
@@ -53,4 +65,5 @@
               i.fa.fa-check
               span.capitalize.bold 
                 tr-span en="submit"
+          
             

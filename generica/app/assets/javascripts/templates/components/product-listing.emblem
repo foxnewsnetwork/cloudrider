@@ -8,6 +8,10 @@ if product
         if product.quality
           span.predash
             tr-span en=product.quality
+        span.right
+          if product.hasShowOrder
+            span #
+            span.spacebar= product.showcaseOrder
       .smaller-details
         if product.price
           span= product.price

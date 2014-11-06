@@ -36,7 +36,12 @@ class Apiv1::ProductsMachine
     -> (t) { t.page(_page).per(_per_page) }
   end
   def _process_ordering
-    -> (product) { product.order_by_created_at }
+    case _order
+    when "showcase"
+      -> (product) { product.order_by_showcase }
+    else
+      -> (product) { product.order_by_created_at }
+    end
   end
   def _process_taxons
     lambda do |product|
@@ -61,5 +66,8 @@ class Apiv1::ProductsMachine
   end
   def _per_page
     params[:per] || 15
+  end
+  def _order
+    params[:order]
   end
 end

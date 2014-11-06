@@ -4,6 +4,9 @@
       link-to "admin.product.edit" model.id
         i.fa.fa-eye
         span.prespace= model.material
+        if model.hasShowOrder
+          span #
+          span= model.showcaseOrder
     .edit
       link-to "admin.product.edit" model.id
         i.fa.fa-edit
@@ -19,4 +22,6 @@
     .media-object
       img.product-image.th src=model.pictures.firstObject.picUrl
 
-    .media-text= model.roughSummary
+    .media-text
+      .summary-text= model.roughSummary
+      .created-date= model.createdAt

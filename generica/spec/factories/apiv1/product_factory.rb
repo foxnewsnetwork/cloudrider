@@ -2,17 +2,18 @@
 #
 # Table name: apiv1_products
 #
-#  id         :integer          not null, primary key
-#  permalink  :string(255)
-#  sku        :string(255)
-#  material   :string(255)
-#  quality    :string(255)
-#  price      :string(255)
-#  amount     :string(255)
-#  place      :string(255)
-#  others     :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id             :integer          not null, primary key
+#  permalink      :string(255)
+#  sku            :string(255)
+#  material       :string(255)
+#  quality        :string(255)
+#  price          :string(255)
+#  amount         :string(255)
+#  place          :string(255)
+#  others         :text
+#  created_at     :datetime
+#  updated_at     :datetime
+#  showcase_order :integer
 #
 
 class Apiv1::ProductFactory

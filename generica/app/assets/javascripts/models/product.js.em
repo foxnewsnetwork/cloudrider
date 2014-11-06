@@ -6,6 +6,7 @@ class Apiv1.Product extends DS.Model
   place: DS.attr "string"
   quality: DS.attr "string"
   others: DS.attr "string"
+  showcaseOrder: DS.attr "number"
   createdAt: DS.attr "date"
   updatedAt: DS.attr "date"
   attachments: DS.hasMany "attachment", async: true
@@ -17,7 +18,7 @@ class Apiv1.Product extends DS.Model
     "#{@price || 'no price'} #{@material || 'unknown material'} #{@amount || 'unknown quantity'} @ #{@place || 'unknown place'} - #{@sku || 'no sku'}"
 
 
-  +computed id, sku, material, price, amount, place, quality, others
+  +computed id, sku, material, price, amount, place, quality, others, showcaseOrder
   coreAttributes: ->
     id: @get("id")
     sku: @get("sku")
@@ -27,3 +28,7 @@ class Apiv1.Product extends DS.Model
     place: @get("place")
     quality: @get("quality")
     others: @get("others")
+    showcaseOrder: @get("showcaseOrder")
+
+  +computed showcaseOrder
+  hasShowOrder: -> not Ember.isBlank @showcaseOrder
