@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Apiv1::Taxons::CreateController do
+describe Admin::Taxons::CreateController do
   let(:user) { Admin::UserFactory.mock }
   let(:create) { post :create, admin_taxon: @taxon_params }
   before do

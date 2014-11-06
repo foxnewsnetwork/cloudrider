@@ -24,7 +24,7 @@ class Apiv1::Translation < ActiveRecord::Base
   include ::Elasticsearch::Model::Callbacks
   class << self
     def known_languages
-      select(:locale).uniq.map(&:locale)
+      select(:locale).uniq.map(&:locale).map(&:to_sym)
     end
     def locale(locale)
       where(:locale => locale.to_s)
@@ -44,7 +44,7 @@ class Apiv1::Translation < ActiveRecord::Base
     end
 
     def available_locales
-      self.distinct(:locale).map { |t| t.locale.to_sym }
+      known_languages
     end
   end
   scope :order_alphabetically,
@@ -65,7 +65,7 @@ class Apiv1::Translation < ActiveRecord::Base
     inclusion: { in: KnownLocales }
 
   def to_ember_hash
-    { id: id, locale: locale, key: key, translated_text: translated_text }
+    { id: id, locale: locale, key: key, translated_text: translated_text, value: value }
   end
   def tl_hash
     { key => translated_text }

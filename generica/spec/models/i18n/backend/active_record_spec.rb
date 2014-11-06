@@ -23,11 +23,5 @@ describe I18n do
     subject { I18n.t(:some_sort_of_key); I18n.t(:some_sort_of_key) }
     specify { should eq "some sort of key" }
   end
-  context 'simple-backend' do
-    before { I18n.locale = "zh-CN".to_sym }
-    after { I18n.locale = :en }
-    subject { I18n.t(:about) }
-    specify { should eq "关于" }
-  end
   
 end

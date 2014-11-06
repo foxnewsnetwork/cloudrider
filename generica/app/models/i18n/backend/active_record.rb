@@ -1,8 +1,12 @@
 class I18n::Backend::ActiveRecord
+  include Singleton
   include I18n::Backend::Base
+  include I18n::Backend::Flatten
+  include I18n::Backend::Memoize
+  include I18n::Backend::Cache
   def available_locales
     begin
-      Apiv1::Translation.available_locales
+      ::Apiv1::Translation.available_locales
     rescue ::ActiveRecord::StatementInvalid
       []
     end
@@ -11,8 +15,8 @@ class I18n::Backend::ActiveRecord
   def store_translations(locale, data, options = {})
     escape = options.fetch(:escape, true)
     flatten_translations(locale, data, escape, false).each do |key, value|
-      Apiv1::Translation.locale(locale).lookup(expand_keys(key)).delete_all
-      Apiv1::Translation.create(:locale => locale.to_s, :key => key.to_s, :value => value)
+      ::Apiv1::Translation.locale(locale).lookup(expand_keys(key)).delete_all
+      ::Apiv1::Translation.create(:locale => locale.to_s, :key => key.to_s, :value => value)
     end
   end
 
@@ -20,7 +24,7 @@ class I18n::Backend::ActiveRecord
 
   def lookup(locale, key, scope = [], options = {})
     key = normalize_flat_keys(locale, key, scope, options[:separator])
-    result = Apiv1::Translation.locale(locale).lookup(key)
+    result = ::Apiv1::Translation.locale(locale).lookup(key)
 
     if result.empty?
       nil
