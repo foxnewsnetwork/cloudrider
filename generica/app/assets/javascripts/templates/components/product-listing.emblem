@@ -12,6 +12,7 @@ if product
           if product.hasShowOrder
             span #
             span.spacebar= product.showcaseOrder
+
       .smaller-details
         if product.price
           span= product.price
@@ -19,6 +20,10 @@ if product
           span @
           tr-span en=product.place
   
+      if product.taxons
+        .taxon-tags
+          each taxon in product.taxons
+            span.tag= taxon.taxonName
 else
   .product-header
     .media-object

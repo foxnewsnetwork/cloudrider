@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :translations, only: [:create], controller: 'translations/create'
     resources :translations, only: [:update], controller: 'translations/update'
     resources :i18n_translations, only: [:index], controller: 'i18n_translations/index'
+    resources :messages, only: [:create], controller: 'messages/create'
+    resources :messages, only: [:index], controller: 'messages/index'
   end
 
   namespace :admin do

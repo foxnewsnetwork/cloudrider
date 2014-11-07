@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105231548) do
+ActiveRecord::Schema.define(version: 20141107174821) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                        null: false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 20141105231548) do
 
   add_index "apiv1_listings_taxons", ["listing_id", "listing_type"], name: "index_apiv1_listings_taxons_on_listing_id_and_listing_type", using: :btree
   add_index "apiv1_listings_taxons", ["taxon_id"], name: "index_apiv1_listings_taxons_on_taxon_id", using: :btree
+
+  create_table "apiv1_messages", force: true do |t|
+    t.string   "from_company"
+    t.string   "sender_email"
+    t.string   "subject_text"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "apiv1_pictures", force: true do |t|
     t.integer  "depictable_id"

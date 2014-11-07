@@ -5,7 +5,7 @@
   .small-12.columns.query
     .row.collapse
       .small-10.columns
-        type-ahead data=taxons value=searchQuery name="fullName" class="full-width"
+        Ember.TextField value=searchQuery class="full-width" name="search"
       .small-2.columns
         button.button.postfix click="search"
           i.fa.fa-search
