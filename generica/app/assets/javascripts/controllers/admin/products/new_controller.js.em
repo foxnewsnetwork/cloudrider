@@ -1,4 +1,9 @@
 class Apiv1.AdminProductsNewController extends Ember.ObjectController
+  activeTaxons: []
+  +computed model
+  rootTaxons: ->
+    @store.find "taxon", parent_id: null
+
   redirectToIndex: ->
     @transitionToRoute 'admin.products.index'
   notifySuccess: ->
@@ -13,4 +18,5 @@ class Apiv1.AdminProductsNewController extends Ember.ObjectController
   actions:
     formSubmitted: ->
       @failureReason = null
+      @model.taxons = @activeTaxons.map (t) -> t.get("id")
       @model.save().then(_.bind @successfulSave, @).catch(_.bind @failedSave, @)

@@ -13,11 +13,12 @@ class Admin::ProductModifier
   end
 
   def update!
-    _product.tap &:save!
+    _bad_relationships.map(&:destroy)
+    _product.tap(&:save!)
   end
 
   def satisfy_specifications?
-    _pictures.all?(&:valid?) && _product.valid?
+    _pictures.all?(&:valid?) && _good_relationships.all?(&:valid?) && _product.valid?
   end
 
   private
@@ -26,11 +27,23 @@ class Admin::ProductModifier
   end
 
   def _assignable_attributes
-    @raw_params.permit *Apiv1::Product::Fields
+    @raw_params.permit(*Apiv1::Product::Fields)
   end
 
   def _pictures
     _pictures_factory.pictures
+  end
+
+  def _bad_relationships
+    _relationships_factory.bad_relationships
+  end
+
+  def _good_relationships
+    _relationships_factory.good_relationships
+  end
+
+  def _relationships_factory
+    @relationships_factory ||= Admin::TaxonRelationshipsFactory.new _product, @raw_params[:taxons]
   end
 
   def _pictures_factory

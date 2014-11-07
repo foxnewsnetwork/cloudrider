@@ -1,4 +1,7 @@
 class Apiv1.FormDataTransformer
+  _is-integer = (number) ->
+    _.isFinite(parseInt number) and (parseFloat(number) % 1 is 0)
+    
   _is-form-data-primitive = (data) ->
     (data instanceof File) or (typeof data is "string") or (typeof data is "number")
 
@@ -6,6 +9,7 @@ class Apiv1.FormDataTransformer
     return key if Ember.is-blank pre
     pre + "[#{key}]"
   
+
   @shallowify = (hash, pre="") ->
     return {} unless hash
     output = {}

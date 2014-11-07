@@ -4,6 +4,7 @@ describe Admin::ProductModifier do
   let(:modifier) { described_class.new product, @params }
   let(:product) { Apiv1::ProductFactory.new.create }
   let(:picture) { Apiv1::PictureFactory.rack_file }
+  let(:taxon) { Apiv1::Taxon.create! taxon_name: "fish" }
   describe "success" do
     before do
       @picture_params = { 0 => picture }
@@ -17,6 +18,37 @@ describe Admin::ProductModifier do
         quality: 'pretty shitty',
         pictures: @picture_params
       }
+    end
+    context 'with taxons' do
+      before do
+        @taxon_params = { 0 => taxon.id }
+        @params = @params.merge taxons: @taxon_params
+      end
+      context '#satisfy_specifications?' do
+        subject { modifier }
+        specify { should be_satisfy_specifications }
+      end
+      context '_good_relationships' do
+        subject { modifier.send('_good_relationships').count }
+        specify { should eq 1 }
+      end
+      context '_bad_relationships' do
+        subject { modifier.send('_bad_relationships').count }
+        specify { should eq 2 }
+      end
+      context 'update' do
+        before { modifier.satisfy_specifications? && modifier.update! }
+        context 'taxons' do
+          before { product.reload }
+          subject { product.taxons.count }
+          specify { should eq 1 }
+        end
+        context 'taxon' do
+          before { product.reload }
+          subject { product.taxons }
+          specify { should eq [taxon] }
+        end
+      end
     end
     context '#satisfy_specifications?' do
       subject { modifier }

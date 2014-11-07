@@ -1,8 +1,15 @@
 class Apiv1.AdminProductEditController extends Ember.ObjectController
+  +computed model.taxons.@each
+  activeTaxons: ->
+    @get("model.taxons") or []
+
+  +computed model
+  rootTaxons: ->
+    @store.find "taxon", parent_id: null
+
   +computed model.coreAttributes
   adminProduct: ->
     return if Ember.isBlank @model.id
-    window.product = @model
     @store.push "admin_product", @model.get("coreAttributes")
 
   redirectToIndex: ->
@@ -18,4 +25,6 @@ class Apiv1.AdminProductEditController extends Ember.ObjectController
 
   actions:
     formSubmitted: ->
+      @failureReason = null
+      @adminProduct.taxons = @activeTaxons.map (t) -> t.get("id")
       @adminProduct.save().then(_.bind @successUpdate, @).catch(_.bind @failedUpdate, @)

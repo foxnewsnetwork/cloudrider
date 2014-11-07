@@ -3,12 +3,10 @@
     margin-left: 0px;
   }
   .expanded > .taxon-interactor {
-    background-color: #008cba;
-    color: lighten(#ddd, 10%);
+    color: darken(#43ac6a, 10%)
   }
   .selected > .taxon-interactor {
-    background-color: #008cba;
-    color: lighten(#ddd, 10%);
+    color: darken(#43ac6a, 10%);
   }
   .taxon-interactor {
     @include transition-property(background-color);
@@ -21,7 +19,7 @@
     
     &:hover {
       &:not(.admin-mode) {
-        background-color: #008cba;
+        background-color: #e1e1e1;
       }
       &.admin-mode {
         background-color: darken(#43ac6a, 10%);

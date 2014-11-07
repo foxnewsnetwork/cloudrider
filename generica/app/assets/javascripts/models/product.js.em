@@ -18,7 +18,7 @@ class Apiv1.Product extends DS.Model
     "#{@price || 'no price'} #{@material || 'unknown material'} #{@amount || 'unknown quantity'} @ #{@place || 'unknown place'} - #{@sku || 'no sku'}"
 
 
-  +computed id, sku, material, price, amount, place, quality, others, showcaseOrder
+  +computed id, sku, material, price, amount, place, quality, others, showcaseOrder, taxonIds
   coreAttributes: ->
     id: @get("id")
     sku: @get("sku")

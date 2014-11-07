@@ -58,6 +58,10 @@
               span.parantheses
                 tr-span en="the first picture will be displayed in the showcase"
             files-field name="pictures" files=model.pictures class="form-control upload-control"
+        .input-section attr-name="taxons"
+          label.form-label
+            tr-span en="select appropriate category tags for this product"
+          tree-taxon-wrapper taxons=rootTaxons activeTaxons=activeTaxons
         
         .actions.row
           .small-6.columns.end

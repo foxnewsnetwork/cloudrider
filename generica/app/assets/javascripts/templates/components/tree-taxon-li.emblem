@@ -1,6 +1,6 @@
 .taxon-interactor.pointer click="interactWithTaxon"
   .view
-    if taxon.hasChildren
+    if isExpandable
       span class=isExpanded:hidden:visible
         i.fa.fa-caret-right
       span class=isExpanded:visible:hidden
