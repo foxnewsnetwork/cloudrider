@@ -28,6 +28,6 @@ class Cloudrider::Generators::MigrationsGenerator < Rails::Generators::Base
   end
 
   def _destinationify_filename(f)
-    File.join "db", "migrate", f.split("_").head.join("_")
+    File.join "db", "migrate", f.split("_").tail.join("_")
   end
 end
