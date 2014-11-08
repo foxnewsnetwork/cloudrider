@@ -13,6 +13,7 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
     _copy_static_components
     _copy_static_pages
     _copy_static_component_styles
+    _copy_admin_templates
     say "You'll need to separately install varying assets"
     say "varying assets include:"
     say "emblems: "
@@ -25,6 +26,9 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
   end
 
   private
+  def _copy_admin_templates
+    directory "app/assets/javascripts/templates/admin", "app/assets/javascripts/templates/admin"
+  end
   def _copy_asset_images
     directory "app/assets/images", "app/assets/images"
   end

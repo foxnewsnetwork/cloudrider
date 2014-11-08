@@ -67,7 +67,12 @@ class Cloudrider::ApplicationCommander
     [Cloudrider::Apiv1::SiteNavComponent, Cloudrider::Apiv1::SiteNavSass]
   end
   def _table_booths
-    [Cloudrider::Apiv1::TableBoothsComponent, Cloudrider::Apiv1::TableBoothsSass]
+    [
+      Cloudrider::Apiv1::TableBoothsComponent, 
+      Cloudrider::Apiv1::TableBoothsSass, 
+      Cloudrider::Apiv1::EmployeesIndexEmblem,
+      Cloudrider::Apiv1::MessagesNewEmblem
+    ]
   end
   def _site_footer
     [Cloudrider::Apiv1::SiteFooterComponent]
