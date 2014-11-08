@@ -10,6 +10,10 @@ if product
         tr-span en=product.material
         if product.sku
           span.predash= product.sku
+    if product.taxons
+      .taxon-tags
+        each taxon in product.taxons
+          span.tag= taxon.taxonName
     if product.others
       p.product-summary
         tr-span en=product.others
