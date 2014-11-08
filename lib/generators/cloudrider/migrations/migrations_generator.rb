@@ -24,7 +24,7 @@ class Cloudrider::Generators::MigrationsGenerator < Rails::Generators::Base
   end
 
   def _original_filenames
-    Dir[File.join(source_root, "*.rb")].map { |f| f.split("/").last }
+    Dir[File.join(self.class.source_root, "*.rb")].map { |f| f.split("/").last }
   end
 
   def _destinationify_filename(f)
