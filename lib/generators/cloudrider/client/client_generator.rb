@@ -85,6 +85,7 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
       "select-locale",
       "tree-taxon-li",
       "tree-taxon-ul",
+      "preload-billboard",
       "tree-taxon-wrapper"
     ].each do |component|
       copy_file "app/assets/javascripts/templates/components/#{component}.emblem", "app/assets/javascripts/templates/components/#{component}.emblem"
@@ -106,6 +107,7 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
       "select-locale",
       "site-footer", 
       "type-ahead",
+      "preload-billboard",
       "tree-taxon-wrapper"].each do |file|
       copy_file "app/assets/stylesheets/apiv1/components/_#{file}.css.scss", "app/assets/stylesheets/apiv1/components/_#{file}.css.scss"
     end
