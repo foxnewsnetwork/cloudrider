@@ -1,7 +1,7 @@
 if product
   .media-object
     link-to "products.product.show" product.id
-      img.product-image src=product.pictures.firstObject.picUrl
+      preload-image class="product-image" source=product.pictures.firstObject.picUrl
   .media-texts
     h2.product-title
       link-to "products.product.show" product.id

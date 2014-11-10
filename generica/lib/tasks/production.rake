@@ -12,4 +12,10 @@ namespace :production do
     Rake::Task["assets:unretardify"].invoke
     Rake::Task["elasticsearch:simple_import"].invoke
   end
+
+  desc "generates the image-preload.js file"
+  task image_preload: :environment do
+    require Rails.root.join "lib", "generica", "image_preloader"
+    Generica::ImagePreloader.new.write_preloader_js_file
+  end
 end

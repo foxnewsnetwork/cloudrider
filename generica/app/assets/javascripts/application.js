@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/effect.all
+//= require jquery-ui/effect
 //= require foundation
 //= require underscore
 //= require handlebars
