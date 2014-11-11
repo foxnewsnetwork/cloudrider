@@ -8,9 +8,7 @@ class Apiv1.PreloadImageComponent extends Ember.Component
   manageSourcePreloading: ->
     return if @alreadyQueuedPreloader or Ember.isBlank @source
     @alreadyQueuedPreloader = true
-    Apiv1.ImagePreloader.registerImage @source, (img) => 
-      console.log img
-      @src = img.src
+    Apiv1.ImagePreloader.registerImage @source, (img) => @src = img.src
     
   didInsertElement: ->
     @manageSourcePreloading()

@@ -1,28 +1,29 @@
-.application-container.toggle-shift.shifted
+preload-billboard
+  .application-container.toggle-shift.shifted
 <% case nav_style %>
 <% when :top %>
-  #canvas-menu-top
-    site-nav
-  #page-wrapper
-    .site-content
-      .not-site-footer
-        == outlet
-      site-footer action="displayModal"
+    #canvas-menu-top
+      site-nav
+    #page-wrapper
+      .site-content
+        .not-site-footer
+          == outlet
+        site-footer action="displayModal"
 <% when :left %>
-  #canvas-menu-left
-    site-nav  
-  #page-wrapper
-    .small-time-header.hide-for-large-up.pointer click=toggleCanvasShift
-      i.fa.fa-bars.fa-3x
-    .site-content
-      .not-site-footer
-        == outlet
-      site-footer
+    #canvas-menu-left
+      site-nav  
+    #page-wrapper
+      .small-time-header.hide-for-large-up.pointer click=toggleCanvasShift
+        i.fa.fa-bars.fa-3x
+      .site-content
+        .not-site-footer
+          == outlet
+        site-footer
 <% end %>
 
-  #fixed-bottom
-    .row
-      flash-message
-.modal-background
-  .modal-vertical-container
-    == outlet "modal"
+    #fixed-bottom
+      .row
+        flash-message
+  .modal-background
+    .modal-vertical-container
+      == outlet "modal"

@@ -1,0 +1,75 @@
+$company-title-font-size: 1.35rem;
+$nav-bar-bg-color: fade-out(#444, 0.25);
+$title-font-color: #eee;
+$tab-font-default-color: #333;
+$tab-bg-default-color: #e7e7e7;
+$tab-bg-active-color: #008cba;
+$tab-font-active-color: #fff;
+$tab-bg-hover-color: darken(#008cba, 10%);
+$tab-font-hover-color: #ddd;
+#canvas-menu-top {
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+}
+#page-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+#admin {
+  margin-top: 65px;
+}
+nav.site-nav {
+  @include display-flex;
+  @include justify-content(center);
+  @include align-items(center);
+  @include flex-direction(row);
+  @include transition-property(box-shadow);
+  @include transition-property(background-color);
+  @include transition-duration(200ms);
+  @include transition-timing-function(ease-in);  
+  
+  width: 100%;
+  &.sticky-naved {
+    @include box-shadow(black 0px 5px 10px);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+  }
+  .possible-container {
+    width: $row-width;
+  }
+  .title-area {
+    padding-left: 15px;
+    font-size: 2rem;
+  }
+  .title-area,
+  .menu-tab {
+    @include display-flex;
+    @include justify-content(center);
+    @include flex-direction(column);
+    height: 65px;
+  }
+  .menu-tab {
+    @include align-items(center);
+  }
+  .menu-tab {
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    @include transition-timing-function(ease-out);
+    font-size: $company-title-font-size;
+    color: $tab-font-default-color;
+    text-align: center;
+    &.active {
+      background-color: $tab-bg-active-color;
+      color: $tab-font-active-color;
+    }
+    &:hover {
+      background-color: $tab-bg-hover-color;
+      color: $tab-font-hover-color;
+    }
+  }
+}

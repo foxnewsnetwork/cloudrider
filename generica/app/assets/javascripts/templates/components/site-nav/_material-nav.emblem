@@ -1,0 +1,29 @@
+.row.collapse
+  link-to "index" (query-params anchor="") class="small-3 medium-6 large-9 columns"
+    .title-area
+      span.hide-for-medium-up
+        i.fa.fa-home
+      span.company-name.show-for-medium-up
+        i.fa.fa-rocket
+
+   
+  link-to "index" (query-params anchor="about") class="small-3 medium-2 large-1 columns"
+    .menu-tab
+      span.hide-for-medium-up
+        i.fa.fa-info-circle
+      span.menu-nav.show-for-medium-up 
+        tr-span en="about"
+  
+  link-to "products.index" class="small-3 medium-2 large-1 columns"
+    .menu-tab
+      span.hide-for-medium-up
+        i.fa.fa-tags
+      span.menu-nav.show-for-medium-up 
+        tr-span en="products"
+
+  link-to "index" (query-params anchor="contacts") class="small-3 medium-2 large-1 columns"
+    .menu-tab
+      span.hide-for-medium-up
+        i.fa.fa-envelope
+      span.menu-nav.show-for-medium-up 
+        tr-span en="contacts"
