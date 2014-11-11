@@ -9,10 +9,10 @@ class Cloudrider::Apiv1::SiteNavSass < Cloudrider::Apiv1::Base
       template.split("/").head.push _unpartialize _extensionify template.split("/").last
     end
     def _unpartialize(filename)
-      filename.gsub /^_*/, '_'
+      "_#{filename}".gsub /^_+/, '_'
     end
     def _extensionify(filename)
-      filename.gsub /\.css\.scss\.erb$/, ".css.scss.erb"
+      "#{filename}.css.scss.erb".gsub /(\.css\.scss\.erb)+$/, '.css.scss.erb'
     end
     def _source(template)
       File.join Cloudrider.root, "generica", "app", "varissets", template
