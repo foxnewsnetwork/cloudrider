@@ -4,4 +4,7 @@ class Apiv1.Message extends DS.Model
   subjectText: DS.attr "string"
   message: DS.attr "string"
   createdAt: DS.attr "date"
-  updatedAt: DS.attr "date"  
+  updatedAt: DS.attr "date"
+  phoneNumber: DS.attr "string"
+  contactPerson: DS.attr "string"
+  companyAddress: DS.attr "string"

@@ -12,6 +12,6 @@ class Apiv1::Messages::CreateController < Apiv1::HomeController
     @message ||= Apiv1::Message.new _message_params
   end
   def _message_params
-    params.require(:message).permit(:from_company, :sender_email, :subject_text, :message)
+    params.require(:message).permit(:from_company, :sender_email, :subject_text, :message, :phone_number, :contact_person, :company_address)
   end
 end

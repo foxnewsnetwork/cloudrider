@@ -13,7 +13,13 @@
             span.capitalize.white
               span.asterisk
               tr-span en="your company"
-            Ember.TextField value=model.fromCompany type="text" placeholder="ex. Jack Smith"
+            Ember.TextField value=model.fromCompany type="text" placeholder="ex. Acme Company"
+
+        .input-section attr-name="contactPerson"
+          label.form-label
+            span.capitalize.white
+              tr-span en="contact person"
+            Ember.TextField value=model.contactPerson type="text" placeholder="ex. Jackson Smith"
 
         .input-section attr-name="senderEmail"
           label.form-label
@@ -21,6 +27,18 @@
               span.asterisk
               tr-span en="company email"
             Ember.TextField value=model.senderEmail type="email" placeholder="ex. jsmith@gmail.com"
+
+        .input-section attr-name="phoneNumber"
+          label.form-label
+            span.capitalize.white
+              tr-span en="callback phone number"
+            Ember.TextField value=model.phoneNumber type="text" placeholder="555 - 123 - 4567"
+
+        .input-section attr-name="companyAddress"
+          label.form-label
+            span.capitalize.white
+              tr-span en="company address or general location"
+            Ember.TextField value=model.companyAddress type="text" placeholder="1234 Seasame Street, California"
 
         .input-section attr-name="subjectText"
           label.form-label
