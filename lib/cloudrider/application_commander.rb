@@ -52,7 +52,12 @@ class Cloudrider::ApplicationCommander
     [Cloudrider::Apiv1::ProductListingComponent, Cloudrider::Apiv1::ProductListingSass]
   end
   def _index
-    [Cloudrider::Apiv1::IndexEmblem]
+    [
+      Cloudrider::Apiv1::IndexEmblem, 
+      Cloudrider::Apiv1::AboutEmblem, 
+      Cloudrider::Apiv1::ContactsEmblem,
+      Cloudrider::Apiv1::IndexRouteEmber
+    ]
   end
   def _cookie_splash
     [Cloudrider::Apiv1::CookieSplashComponent, Cloudrider::Apiv1::CookieSplashSass]

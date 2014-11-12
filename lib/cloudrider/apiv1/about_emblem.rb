@@ -1,4 +1,4 @@
-class Cloudrider::Apiv1::IndexEmblem < Cloudrider::Apiv1::Base
+class Cloudrider::Apiv1::AboutEmblem < Cloudrider::Apiv1::Base
   class Context
     attr_accessor :index_style
   end

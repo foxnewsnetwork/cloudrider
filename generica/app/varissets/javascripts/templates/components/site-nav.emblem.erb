@@ -5,17 +5,17 @@
     i.fa.fa-home
     span.capitalize.prespace <%= my_company_name %>
 .nav-button
-  link-to "index" (query-params anchor="about") class="side-nav"
+  link-to <%= about_link %> class="side-nav"
     i.fa.fa-info-circle
     span.capitalize.prespace 
       tr-span en="about"
 .nav-button
-  link-to "products.index" class="side-nav"
+  link-to <%= products_link %> class="side-nav"
     i.fa.fa-tags
     span.capitalize.prespace 
       tr-span en="products"
 .nav-button
-  link-to "index" (query-params anchor="contacts") class="side-nav"
+  link-to <%= contacts_link %> class="side-nav"
     i.fa.fa-envelope
     span.capitalize.prespace 
       tr-span en="contacts"
@@ -27,17 +27,17 @@
     .company-name.show-for-medium-up <%= my_company_name %>
 
   section.options-menu
-    link-to "index" (query-params anchor="about") class="menu-tab"
+    link-to <%= about_link %> class="menu-tab"
       .hide-for-medium-up
         i.fa.fa-info-circle
       .menu-nav.show-for-medium-up 
         tr-span en="about"
-    link-to "products.index" class="menu-tab"
+    link-to <%= products_link %> class="menu-tab"
       .hide-for-medium-up
         i.fa.fa-tags
       .menu-nav.show-for-medium-up 
         tr-span en="products"
-    link-to "index" (query-params anchor="contacts") class="menu-tab"
+    link-to <%= contacts_link %> class="menu-tab"
       .hide-for-medium-up
         i.fa.fa-envelope
       .menu-nav.show-for-medium-up 
@@ -53,21 +53,21 @@
         i.fa.fa-rocket
 
    
-  link-to "index" (query-params anchor="about") class="small-3 medium-2 large-1 columns"
+  link-to <%= about_link %> class="small-3 medium-2 large-1 columns"
     .menu-tab
       span.hide-for-medium-up
         i.fa.fa-info-circle
       span.menu-nav.show-for-medium-up 
         tr-span en="about"
   
-  link-to "products.index" class="small-3 medium-2 large-1 columns"
+  link-to <%= products_link %> class="small-3 medium-2 large-1 columns"
     .menu-tab
       span.hide-for-medium-up
         i.fa.fa-tags
       span.menu-nav.show-for-medium-up 
         tr-span en="products"
 
-  link-to "index" (query-params anchor="contacts") class="small-3 medium-2 large-1 columns"
+  link-to <%= contacts_link %> class="small-3 medium-2 large-1 columns"
     .menu-tab
       span.hide-for-medium-up
         i.fa.fa-envelope

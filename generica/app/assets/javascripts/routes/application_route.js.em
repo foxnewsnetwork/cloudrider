@@ -5,7 +5,7 @@ class Apiv1.ApplicationRoute extends Ember.Route
       outlet: 'modal'
       parentView: 'application'
   modalModelFor: (modalName) ->
-    return @store.createRecord("adminSession") if modalName is "login"
+    @store.createRecord("adminSession") if modalName is "login"
   actions:
     displayModal: (modalName) ->
       $(".modal-background").show()

@@ -1,4 +1,6 @@
 Apiv1.Router.map ->
+  @route "about"
+  @route "contacts"
   @resource "products", path: "/products", ->
     @resource "products.product", path: "/product/:product_id", ->
       @route "show"

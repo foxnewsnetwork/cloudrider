@@ -1,11 +1,13 @@
 hero-splash
-
-<% if products_first? %>
+<% case index_style %>
+<% when :pages %>
+products-showcase id="products" products=model.products
+<% when :product_first %>
 products-showcase id="products" products=model.products
 introductory-lobby id="about"
-<% else %>
-introductory-lobby id="about"
-products-showcase id="products" products=model.products
-<% end %>
-
 table-booths id="contacts" contacts=model.employees
+<% when :about_first %>
+products-showcase id="products" products=model.products
+introductory-lobby id="about"
+table-booths id="contacts" contacts=model.employees
+<% end %>

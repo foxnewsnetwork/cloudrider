@@ -1,0 +1,8 @@
+class Apiv1.IndexRoute extends Ember.Route
+  model: -> 
+    products: @store.find("product", per: 3, order: "showcase")
+<% case index_style %>
+<% when :product_first, :about_first %>
+    employees: @store.find("employee", per: 5)
+    message: @store.createRecord("message")
+<% end %>    
