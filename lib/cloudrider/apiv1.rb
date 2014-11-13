@@ -11,15 +11,16 @@ module Cloudrider::Apiv1
       File.expand_path "../../../generica", __FILE__
     end
     def file_name_from_class_name(class_name)
-      case family_from_class_name(class_name.to_s)
+      family = family_from_class_name(class_name.to_s)
+      case family
       when :component
         _file_name_process.call(class_name.to_s).join("-")
       when :sass
         "_" + _file_name_process.call(class_name.to_s).join("-")
-      when :emblem
+      when :emblem, :ember
         _file_name_process.call(class_name.to_s).join("_")
       else
-        raise Base::UnknownFamilyResidence, class_name
+        raise Base::UnknownFamilyResidence, family
       end
     end
     def file_ext_from_class_name(class_name)

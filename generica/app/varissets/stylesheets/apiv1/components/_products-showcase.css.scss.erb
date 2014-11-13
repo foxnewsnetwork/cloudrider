@@ -1,5 +1,43 @@
 .products-showcase {
 <% case showcase_style %>
+<% when :airbnb_quad %>
+  .products-row {
+    margin-bottom: 2.5rem;
+  }
+  .showcase-title {
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+    text-align: center;
+    font-size: 2rem;
+    text-transform: capitalize;
+  }
+  .product-pre-note {
+    @include display-flex;
+    @include justify-content(center);
+    @include flex-direction(column);
+    background: {
+      image: url(hero-splash/rocks.jpg);
+      size: cover;
+      position: top center;
+    }
+    min-height: 30rem;
+  }
+  .product-post-note {
+    @include display-flex;
+    @include justify-content(center);
+    @include flex-direction(column);
+    background: {
+      image: url(hero-splash/rocks.jpg);
+      size: cover;
+      position: bottom center;
+    }
+    min-height: 30rem;
+  }
+  .after-thought {
+    text-align: center;
+    font-weight: bolder;
+    background-color: fade-out(#fff, 0.4);
+  }
 <% when :big_media %>
   .contained-media-one {
     padding-top: 5rem;

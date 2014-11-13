@@ -1,4 +1,5 @@
 class Apiv1.FormForComponent extends Ember.Component
+  classNames: ['form-for']
   formData: ->
     @$("form").serializeArray()
 

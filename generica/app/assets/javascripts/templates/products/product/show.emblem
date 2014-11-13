@@ -32,7 +32,7 @@
                 span= product.price
             if product.place
               dt.upcase 
-                tr-span en="location"
+                tr-span en="origin"
               dd
                 span= product.place
             if product.quality
@@ -40,6 +40,12 @@
                 tr-span en="quality"
               dd
                 span= product.quality
+            if product.others
+              dt.upcase
+                tr-span en="description"
+              dd
+                tr-span en=product.others
+                    
       if product.taxons
         .row
           .small-12.columns
@@ -48,13 +54,6 @@
             .taxon-tags
               each taxon in product.taxons
                 span.tag= taxon.taxonName
-      if product.others
-        .row
-          .small-12.columns
-            h4.description.capitalize
-              tr-span en="description"
-            p.product-summary
-              tr-span en=product.others
   .row
     .small-12.columns
       ul.pics.small-block-grid-3.medium-block-grid-6.large-block-grid-9
@@ -70,10 +69,3 @@
         each attachment in product.attachments
           a href=attachment.fileUrl
             span.spacebar= attachment.fileName
-
-  .row
-    .small-12.columns
-      .call-to-action
-        tr-span en="is this what you are looking for?"
-      a.button.email-us href="mailto:terricapo@gmail.com"
-        tr-span en="send us an email"

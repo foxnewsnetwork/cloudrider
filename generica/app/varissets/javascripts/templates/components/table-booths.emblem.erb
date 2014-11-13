@@ -1,4 +1,24 @@
 <% case booth_style %>
+<% when :card_by_side %>
+.row
+  .small-12.medium-6.columns.filler-picture
+    .form-card
+      .title
+        tr-span en="contact us"
+      .contact-info
+        dl.various-info
+          dt.capitalize
+            tr-span en="address"
+          dd <%= company_address %>
+          dt.capitalize
+            tr-span en="phone"
+          dd <%= company_phone_number %>
+          dt.capitalize
+            tr-span en="email"
+          dd <%= company_email %>
+    
+  .small-12.medium-6.columns.form-card
+    == render "messages/new" message
 <% when :just_contact %>
 .contact-us-picture.large-6.columns.show-for-large-up
   .ctn
@@ -14,7 +34,7 @@
 
 .contact-form-side.small-12.large-6.columns
   == render "messages/new" message
-<% :just_cards %>
+<% when :just_cards %>
 .business-cards
   .row
     each employee in employees

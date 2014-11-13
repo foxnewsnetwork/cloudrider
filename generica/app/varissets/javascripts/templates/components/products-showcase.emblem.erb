@@ -1,4 +1,33 @@
 <% case showcase_style %>
+<% when :airbnb_quad %>
+.row
+  .small-12.columns
+    .showcase-title
+      tr-span en="current specials"
+
+.row.products-row
+  if products.isPending
+    .small-12.medium-6.large-3.columns.end
+      .product-display
+        h2.capitalize.ellipsis
+          i.fa.fa-cog.fa-spin
+          tr-span en="loading..."
+  else
+    each product in visibleProducts
+      .small-12.medium-6.large-3.columns.airbnb-quad
+        product-display product=product
+    else
+      .small-12.medium-6.large-3.columns.airbnb-quad
+        product-display
+
+.product-post-note
+  link-to "products.index"
+    h2.after-thought
+      span.spacebar= products.content.meta.count
+      span.capitalize.spacebar 
+        tr-span en="total products"
+      i.fa.fa-caret-right
+
 <% when :big_media %>
 if products.isPending
   .contained-media-one.product-container

@@ -1,5 +1,9 @@
 # Cloudrider
 
+Deployment use for restarting the server
+```bash
+$ rake production:on_restart RAILS_ENV=production && kill -QUIT $(cat tmp/pids/unicorn.pid) && unicorn_rails -c config/unicorn.conf.rb -E production -D
+```
 FUTURE TODO:
 switch I18n translations to a key-value storage basis with a redis cluster
 

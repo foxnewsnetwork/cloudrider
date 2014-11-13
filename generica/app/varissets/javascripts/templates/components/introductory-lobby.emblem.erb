@@ -23,4 +23,28 @@
           tr-span en=<%= sentence.inspect %>
       <% end %>
 .horizontal-cell.fishing-background
+<% when :frame_thumbnail %>
+.row
+  .small-12
+    .row
+      .small-12.medium-4.medium-offset-2.columns
+        .about-intro
+          h1.title.capitalize.intro
+            tr-span en="about us"
+          h3.company-bs.intro
+            tr-span en=<%= about_us_sentences.first.inspect %>
+          p.summaries.intro
+          <% about_us_sentences.tail.each do |sentence| %>
+            span.spacebar
+              tr-span en=<%= sentence.inspect %>
+          <% end %>
+      
+      .small-12.medium-6.columns
+        preload-image class="th fishing-background" source="assets/introductory-lobby/fishing.jpg"
+    .row
+      .small-12.medium-6.columns
+        preload-image class="th fishing-background" source="assets/introductory-lobby/fishing.jpg"
+      .small-12.medium-6.columns
+        preload-image class="th fishing-background" source="assets/introductory-lobby/fishing.jpg"
+
 <% end %>

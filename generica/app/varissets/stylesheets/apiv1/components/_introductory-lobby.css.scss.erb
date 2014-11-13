@@ -36,5 +36,54 @@
       position: <%= background_image_position %>;
     }
   }
+<% when :frame_thumbnail %>
+  @include display-flex;
+  @include justify-content(space-between);
+  margin-bottom: 3.5rem;
+  .about-intro {
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(flex-end);
+    @media #{$small-only} {
+      min-height: 100px;
+    }
+    @media #{$medium-up} {
+      min-height: 445px;
+    }
+  }
+  .intro {
+    @media #{$small-only} {
+      text-align: left;
+    }
+    @media #{$medium-up} {
+      text-align: right;
+    }
+  }
+  .about-and-so {
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(flex-start);
+    @media #{$small-only} {
+      min-height: 100px;
+    }
+    @media #{$medium-up} {
+      min-height: 445px;
+    }
+  }
+  .and-so {
+    text-align: left;
+  }
+  .fishing-background {
+    background: {
+      image: url(introductory-lobby/fishing.jpg);
+      size: cover;
+      position: bottom left;
+    }
+  }
+  .summaries {
+    font-size: 1.2rem;
+  }  
 <% end %>
 }

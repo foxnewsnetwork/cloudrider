@@ -4,10 +4,10 @@ class Cloudrider::Apiv1::IndexRouteEmber < Cloudrider::Apiv1::Base
   end
   private
   def _folder
-    "app/assets/javascripts/templates/routes"
+    "app/assets/javascripts/routes"
   end
   def _source_folder
-    "app/varissets/javascripts/templates/routes"
+    "app/varissets/javascripts/routes"
   end
   def _context
     Context.new.tap do |c|
