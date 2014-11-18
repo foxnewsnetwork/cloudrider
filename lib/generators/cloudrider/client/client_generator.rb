@@ -48,7 +48,8 @@ class Cloudrider::Generators::ClientGenerator < Rails::Generators::Base
       "models", 
       "packages", 
       "routes", 
-      "transforms", 
+      "transforms",
+      "templates/products",
       "views"
     ].each do |folder|
       directory "app/assets/javascripts/#{folder}", "app/assets/javascripts/#{folder}"
