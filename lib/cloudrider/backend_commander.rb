@@ -26,15 +26,13 @@ class Cloudrider::BackendCommander
   def _database
     [Cloudrider::Serverside::DatabaseYaml]
   end
+  def _configs
+    _nginx + _unicorn + _database
+  end
   def _related_backends
     case _backend_name
-    when "admin"
-    when "user"
-    when "employee"
-    when "product"
-    when "offer"
-    when "message"
-    when "taxon"
+    when "configs"
+      _configs
     when "nginx"
       _nginx
     when "unicorn"
@@ -51,5 +49,5 @@ class Cloudrider::BackendCommander
   def _backend_name
     @params[:name]
   end
-  KnownBackends = ["admin", "user", "employee", "product", "offer", "message", "taxon", "nginx", "unicorn", "database"]
+  KnownBackends = ["configs", "nginx", "unicorn", "database"]
 end

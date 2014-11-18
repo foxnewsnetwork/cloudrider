@@ -1,6 +1,6 @@
 class Cloudrider::Serverside::Base
-  def initialize(style=nil)
-    @style = style.to_s
+  def initialize(style=[])
+    @style = style
   end
   def protofile
     Cloudrider::Protofile.new.tap do |p|

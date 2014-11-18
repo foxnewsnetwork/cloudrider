@@ -10,7 +10,7 @@ class Cloudrider::Serverside::UnicornConfRuby < Cloudrider::Serverside::Base
 
   def _context
     Context.new.tap do |c|
-      c.project_name = @style.split(" ").first
+      c.project_name = @style.first
     end
   end
 

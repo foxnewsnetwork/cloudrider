@@ -9,8 +9,8 @@ class Cloudrider::Serverside::NginxConf < Cloudrider::Serverside::Base
   end
   def _context
     Context.new.tap do |c|
-      c.web_urls = @style.split(" ").tail
-      c.project_name = @style.split(" ").first
+      c.web_urls = @style.tail
+      c.project_name = @style.first
     end
   end
 end

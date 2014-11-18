@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: <%= project_name %>_development
+  database: #{project_name}_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: <%= project_name %>_test
+  database: #{project_name}_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,5 +49,5 @@ test:
 #
 production:
   <<: *default
-  database: pisource_production
+  database: #{project_name}_production
   password: <%= ENV['APIV1_DATABASE_PASSWORD'] %>

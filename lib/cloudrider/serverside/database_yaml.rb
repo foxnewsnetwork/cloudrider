@@ -1,6 +1,6 @@
 class Cloudrider::Serverside::DatabaseYaml < Cloudrider::Serverside::Base
   class Context
-    attr_accessor :web_urls, :project_name
+    attr_accessor :project_name
   end
   private
   def _file_name
@@ -8,9 +8,13 @@ class Cloudrider::Serverside::DatabaseYaml < Cloudrider::Serverside::Base
   end
   def _context
     Context.new.tap do |c|
-      c.web_urls = @style.split(" ").tail
-      c.project_name = @style.split(" ").first
+      c.project_name = @style.first
     end
   end
-  
+  def _template
+    @template ||= Tilt::StringTemplate.new _source
+  end
+  def _source_file
+    _file_name + ".str"
+  end
 end
