@@ -6,6 +6,12 @@ class Apiv1::ProductsMachine
   def products
     @products ||= _filter_pipeline.call Apiv1::Product
   end
+  def pictures
+    @pictures ||= Apiv1::Picture.belonging_to *products
+  end
+  def taxons
+    @taxons ||= Apiv1::Taxon.belonging_to *products
+  end
   def meta_hash
     {
       page: _page,

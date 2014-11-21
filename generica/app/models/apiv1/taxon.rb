@@ -16,6 +16,11 @@
 class Apiv1::Taxon < ActiveRecord::Base
   Fields = [:taxon_name, :explanation, :parent_id]
   class << self
+    def belonging_to(*products)
+      return [] if products.blank?
+      relationships = Apiv1::Listings::TaxonRelationship.belonging_to(*products)
+      where id: relationships.map(&:taxon_id)
+    end
     def find_by_permalink_genus(str, genus)
       permalink = Apiv1::Permalinkifier.permalinkify str
       by_root_genus(genus).by_permalink(permalink).first

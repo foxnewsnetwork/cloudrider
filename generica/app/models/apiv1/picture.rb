@@ -14,6 +14,12 @@
 #
 
 class Apiv1::Picture < ActiveRecord::Base
+  class << self
+    def belonging_to(*products)
+      return [] if products.blank?
+      where(depictable: products)
+    end
+  end
   belongs_to :depictable,
     polymorphic: true
 

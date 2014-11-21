@@ -1,4 +1,12 @@
 <% case nav_style %>
+<% when :craigslist %>
+.row
+  .small-12.columns
+    .space-between
+      link-to "index" class="button-like"
+        span <%= my_company_name %>
+      a.pointer.button-like click="displayModal 'login'"
+        tr-span en="my account"
 <% when :left %>
 .nav-button
   link-to "index" (query-params anchor="") class="side-nav"

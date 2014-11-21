@@ -3,7 +3,7 @@ preload-billboard
 <% case nav_style %>
 <% when :top, :material %>
     #canvas-menu-top
-      site-nav
+      site-nav action="displayModal"
     #page-wrapper
       .site-content
         .not-site-footer
@@ -11,7 +11,7 @@ preload-billboard
         site-footer action="displayModal"
 <% when :left %>
     #canvas-menu-left
-      site-nav  
+      site-nav action="displayModal"
     #page-wrapper
       .small-time-header.hide-for-large-up.pointer click=toggleCanvasShift
         i.fa.fa-bars.fa-3x

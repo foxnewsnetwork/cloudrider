@@ -82,6 +82,12 @@ class Cloudrider::ApplicationCommander
   def _site_footer
     [Cloudrider::Apiv1::SiteFooterComponent]
   end
+  def _registrar
+    [Cloudrider::Apiv1::LoginModalEmblem]
+  end
+  def _product_show
+    [Cloudrider::Apiv1::ProductShowEmblem]
+  end
   def _varisset_name
     @params[:name]
   end
@@ -114,6 +120,10 @@ class Cloudrider::ApplicationCommander
       _site_nav
     when "table-booths"
       _table_booths
+    when "registrar"
+      _registrar
+    when "product-show"
+      _product_show
     else
       raise UnknownOrUnimplmenetedVarisset, _varisset_name
     end
@@ -130,7 +140,9 @@ class Cloudrider::ApplicationCommander
     "products-showcase",
     "site-nav",
     "site-footer",
-    "table-booths"
+    "table-booths",
+    "registrar",
+    "product-show"
   ]
 end
 

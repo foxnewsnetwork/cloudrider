@@ -1,0 +1,36 @@
+.row.apiv1-login-modal
+  .action-cancel.pointer click="closeModal"
+    i.fa.fa-times
+  form-for errors=failureReason submit="formSubmitted"
+    .small-12.columns
+      fieldset
+        legend
+          tr-span en="user login"
+<% if registerable? %>          
+        h3.alt-actions
+          a.pointer click="displayModal 'register'"
+            span.capitalize.spacebar
+              tr-span en="no account?" 
+            span.capitalize
+              tr-span en="register here"
+<% end %>              
+        .input-section attr-name="email"
+          label.form-label
+            tr-span en="email"
+            Ember.TextField name="email" value=session.email
+        .input-section attr-name="password"
+          label.form-label
+            tr-span en="password"
+            Ember.TextField name="password" value=session.password type="password"
+
+    .small-6.columns
+      .input-section
+        promise-button model=session class="button expand"
+          i.fa.fa-check
+          tr-span en="submit"
+
+    .small-6.columns
+      .input-section
+        button.button.expand.alert click="closeModal"
+          i.fa.fa-times
+          tr-span en="cancel"

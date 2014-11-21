@@ -23,3 +23,7 @@ class Apiv1.SiteNavComponent extends Ember.Component
   willDestroyElement: -> 
     $("#page-wrapper").unbind "touchmove"
     $("#page-wrapper").unbind "scroll"
+
+  actions:
+    displayModal: (modal) ->
+      @sendAction 'action', modal

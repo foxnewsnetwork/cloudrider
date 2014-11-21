@@ -1,8 +1,14 @@
 class Apiv1::Products::IndexController < Apiv1::HomeController
   def index
-    render json: { products: _products_hash, meta: _meta_hash }
+    render json: { products: _products_hash, meta: _meta_hash, pictures: _pictures_hash, taxons: _taxons_hash }
   end
   private
+  def _pictures_hash
+    _products_machine.pictures.map &:to_ember_hash
+  end
+  def _taxons_hash
+    _products_machine.taxons.map &:to_ember_hash
+  end
   def _products_hash
     _products.map &:to_ember_hash
   end
@@ -16,6 +22,6 @@ class Apiv1::Products::IndexController < Apiv1::HomeController
     @products_machine ||= Apiv1::ProductsMachine.new _query_params
   end
   def _query_params
-    params.permit(:page, :per, :query, :order).merge taxons: params[:taxons]
+    params.permit(:page, :per, :query, :order, :user_id).merge taxons: params[:taxons]
   end
 end
