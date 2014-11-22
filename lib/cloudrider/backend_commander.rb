@@ -14,7 +14,7 @@ class Cloudrider::BackendCommander
   end
 
   def files_to_write
-    _related_backends.flatten.map { |ac| ac.new _backend_style }.map(&:protofile)
+    _related_backends.flatten.map { |ac| ac.new style: _backend_style, protosite: _protosite }.map(&:protofile)
   end
   private
   def _nginx
@@ -42,6 +42,9 @@ class Cloudrider::BackendCommander
     else
       raise UnknownOrUnimplmenetedVarisset, _backend_name
     end
+  end
+  def _protosite
+    @params[:protosite]
   end
   def _backend_style
     @params[:style]

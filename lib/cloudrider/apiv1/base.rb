@@ -1,8 +1,9 @@
 class Cloudrider::Apiv1::Base
   class UnknownFileExtension < StandardError; end
   class UnknownFamilyResidence < StandardError; end
-  def initialize(style=nil)
-    @style = style
+  def initialize(name: name, protosite: protosite)
+    @name, @protosite = name, protosite
+    @style = name
   end
   def protofile
     Cloudrider::Protofile.new.tap do |p|

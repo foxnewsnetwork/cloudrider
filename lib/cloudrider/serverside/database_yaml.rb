@@ -8,7 +8,8 @@ class Cloudrider::Serverside::DatabaseYaml < Cloudrider::Serverside::Base
   end
   def _context
     Context.new.tap do |c|
-      c.project_name = @style.first
+      c.project_name = @style.first if @style.present?
+      c.project_name = @protosite.project_name if @protosite.present?
     end
   end
   def _template

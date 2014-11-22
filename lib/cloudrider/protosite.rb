@@ -11,7 +11,7 @@
 # }
 
 class Cloudrider::Protosite
-  KnownPages = [:index, :products_index, :product_show, :about_us, :contact_us]
+  KnownPages = [:index, :products_index, :product_show, :about_us, :contact_us, :offers_new]
   KnownFunctionalities = [:admin_panel, :user_accounts, :offerable_products, :categorizable_products]
   KnownThemes = [:craigslist, :material, :amateur, :girly, :flat]
   KnownLayouts = [
@@ -22,9 +22,61 @@ class Cloudrider::Protosite
     "mixed-width, hero-narrow", # bootstrap circa 2011
     "narrow-width" # circa 2007 yahoo
   ]
+
+  def self.the_craigslist
+    {
+      project_name: "craigslist inspired market",
+      domain_names: ['www.craigslist-clone.com', 'craigslist-clone.com'],
+      pages: [
+        {
+          name: :index,
+          components: ["products-showcase", "product-display", "search-and-filter"]
+        },
+        {
+          name: :products_index,
+          components: ["produts-catalog", "product-listing", "search-and-filter"]
+        },
+        {
+          name: :product_show,
+          components: ["offers-overview"]
+        },
+        {
+          name: :offers_new,
+          components: []
+        }
+      ],
+      functionalities: [:admin_panel, :user_accounts, :offerable_products, :categorizable_products],
+      theme: :craigslist,
+      layout: "mixed-width, hero-narrow"
+    }
+  end
+
+  def self.from_hash(hash)
+    new.tap do |p|
+      p.project_name = hash[:project_name]
+      p.domain_names = hash[:domain_names]
+      p.theme = hash[:theme]
+      p.layout = hash[:layout]
+      p.pages = hash[:pages].to_a.map { |page_hash| Protopage.new page_hash }
+    end
+  end
+  attr_accessor :pages, :functionalities, :theme, :project_name, :domain_names, :layout
 end
 
 class Cloudrider::Protosite::Protopage
   attr_accessor :name, :components  
-  KnownComponents = ["hero-splash", "cookie-splash", "introductory-lobby", "products-showcase", "table-booths", "products-catalog"]
+  KnownComponents = [
+    "hero-splash",
+    "cookie-splash",
+    "introductory-lobby",
+    "products-showcase",
+    "table-booths",
+    "products-catalog",
+    "search-and-filter",
+    "offers-overview"
+  ]
+  def initialize(name: name, components: components)
+    @name, @components = name, components.to_a
+  end
 end
+

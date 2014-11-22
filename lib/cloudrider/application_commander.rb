@@ -6,33 +6,13 @@ class Cloudrider::ApplicationCommander
     def varisset_protofiles_for(params)
       new(params).files_to_write
     end
-    def all_varissets
-      new(name: :all).all_files
-    end
   end
   def initialize(params)
     @params = params
   end
 
   def files_to_write
-    _related_assets.flatten.map { |ac| ac.new _varisset_style }.map(&:protofile)
-  end
-
-  def all_files
-    [ 
-      _product_display,
-      _application,
-      _hero_splash,
-      _introductory_lobby,
-      _product_listing,
-      _index,
-      _cookie_splash,
-      _products_catalog,
-      _products_showcase,
-      _site_nav,
-      _table_booths,
-      _site_footer
-    ].flatten.map { |ac| ac.new _varisset_style }.map(&:protofile)
+    _related_assets.flatten.map { |ac| ac.new style: _varisset_style, protosite: _protosite }.map(&:protofile)
   end
 
   private
@@ -80,13 +60,22 @@ class Cloudrider::ApplicationCommander
     ]
   end
   def _site_footer
-    [Cloudrider::Apiv1::SiteFooterComponent]
-  end
-  def _registrar
-    [Cloudrider::Apiv1::LoginModalEmblem]
+    [Cloudrider::Apiv1::SiteFooterComponent, Cloudrider::Apiv1::SiteFooterSass]
   end
   def _product_show
     [Cloudrider::Apiv1::ProductShowEmblem]
+  end
+  def _products_index
+    [Cloudrider::Apiv1::ProductsIndexEmblem, Cloudrider::Apiv1::ProductsEmblem]
+  end
+  def _offers_overview
+    [Cloudrider::Apiv1::OffersOverviewComponent, Cloudrider::Apiv1::OffersOverviewSass]
+  end
+  def _search_and_filter
+    [Cloudrider::Apiv1::SearchAndFilterComponent, Cloudrider::Apiv1::SearchAndFilterSass]
+  end
+  def _protosite
+    @params[:protosite]
   end
   def _varisset_name
     @params[:name]
@@ -120,10 +109,14 @@ class Cloudrider::ApplicationCommander
       _site_nav
     when "table-booths"
       _table_booths
-    when "registrar"
-      _registrar
     when "product-show"
       _product_show
+    when "products-index"
+      _products_index
+    when "offers-overview"
+      _offers_overview
+    when "search-and-filter"
+      _search_and_filter
     else
       raise UnknownOrUnimplmenetedVarisset, _varisset_name
     end
@@ -141,8 +134,10 @@ class Cloudrider::ApplicationCommander
     "site-nav",
     "site-footer",
     "table-booths",
-    "registrar",
-    "product-show"
+    "product-show",
+    "products-index",
+    "offers-overview",
+    "search-and-filter"
   ]
 end
 
