@@ -1,3 +1,4 @@
+Dir[File.join(__dir__, "*.rb")].each { |f| require f }
 module Cloudrider
   module WebFirm
     class Slave

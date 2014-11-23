@@ -23,41 +23,14 @@ class Cloudrider::Protosite
     "narrow-width" # circa 2007 yahoo
   ]
 
-  def self.the_craigslist
-    {
-      project_name: "craigslist inspired market",
-      domain_names: ['www.craigslist-clone.com', 'craigslist-clone.com'],
-      pages: [
-        {
-          name: :index,
-          components: ["products-showcase", "product-display", "search-and-filter"]
-        },
-        {
-          name: :products_index,
-          components: ["produts-catalog", "product-listing", "search-and-filter"]
-        },
-        {
-          name: :product_show,
-          components: ["offers-overview"]
-        },
-        {
-          name: :offers_new,
-          components: []
-        }
-      ],
-      functionalities: [:admin_panel, :user_accounts, :offerable_products, :categorizable_products],
-      theme: :craigslist,
-      layout: "mixed-width, hero-narrow"
-    }
-  end
-
   def self.from_hash(hash)
+    symbolized_hash = hash.symbolize_keys
     new.tap do |p|
-      p.project_name = hash[:project_name]
-      p.domain_names = hash[:domain_names]
-      p.theme = hash[:theme]
-      p.layout = hash[:layout]
-      p.pages = hash[:pages].to_a.map { |page_hash| Protopage.new page_hash }
+      p.project_name = symbolized_hash[:project_name]
+      p.domain_names = symbolized_hash[:domain_names]
+      p.theme = symbolized_hash[:theme]
+      p.layout = symbolized_hash[:layout]
+      p.pages = symbolized_hash[:pages].to_a.map { |page_hash| Protopage.new page_hash.symbolize_keys }
     end
   end
   attr_accessor :pages, :functionalities, :theme, :project_name, :domain_names, :layout

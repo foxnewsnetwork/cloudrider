@@ -62,6 +62,9 @@ class Cloudrider::ApplicationCommander
   def _site_footer
     [Cloudrider::Apiv1::SiteFooterComponent, Cloudrider::Apiv1::SiteFooterSass]
   end
+  def _offers_new
+    [Cloudrider::Apiv1::OffersNewEmblem]
+  end
   def _product_show
     [Cloudrider::Apiv1::ProductShowEmblem]
   end
@@ -84,38 +87,40 @@ class Cloudrider::ApplicationCommander
     @params[:style]
   end
   def _related_assets
-    case _varisset_name
+    case _varisset_name.underscore
     when "application"
       _application
     when "index"
       _index
-    when "cookie-splash"
+    when "cookie_splash"
       _cookie_splash
-    when "hero-splash"
+    when "hero_splash"
       _hero_splash
-    when "introductory-lobby"
+    when "introductory_lobby"
       _introductory_lobby
-    when "product-display"
+    when "product_display"
       _product_display
-    when "product-listing"
+    when "product_listing"
       _product_listing
-    when "products-catalog"
+    when "products_catalog"
       _products_catalog
-    when "products-showcase"
+    when "products_showcase"
       _products_showcase
-    when "site-footer"
+    when "site_footer"
       _site_footer
-    when "site-nav"
+    when "site_nav"
       _site_nav
-    when "table-booths"
+    when "table_booths"
       _table_booths
-    when "product-show"
+    when "product_show"
       _product_show
-    when "products-index"
+    when "products_index"
       _products_index
-    when "offers-overview"
+    when "offers_overview"
       _offers_overview
-    when "search-and-filter"
+    when "offers_new"
+      _offers_new
+    when "search_and_filter"
       _search_and_filter
     else
       raise UnknownOrUnimplmenetedVarisset, _varisset_name

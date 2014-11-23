@@ -9,12 +9,12 @@ class Cloudrider::Serverside::NginxConf < Cloudrider::Serverside::Base
   end
   def _context
     Context.new.tap do |c|
-      if @style.present?
-        c.web_urls = @style.tail
-        c.project_name = @style.first
-      else
+      if @protosite.present?
         c.web_urls = @protosite.domain_names
         c.project_name = @protosite.project_name
+      else
+        c.web_urls = @style.tail
+        c.project_name = @style.first
       end
     end
   end

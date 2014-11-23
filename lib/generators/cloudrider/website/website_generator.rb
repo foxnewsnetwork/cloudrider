@@ -1,12 +1,11 @@
 require "cloudrider/web_firm"
-require "cloudrider/protosite"
 module Cloudrider::Generators; end
-class Cloudrider::Generators::WebFirmGenerator < Rails::Generators::NamedBase
-
+class Cloudrider::Generators::WebsiteGenerator < Rails::Generators::NamedBase
+  source_root File.expand_path "../../../../../generica", __FILE__
   desc "Builds a website when given a json file specifying the desired functionalities and such"
   def create_the_variable_files
     _protofiles.each do |protofile|
-      case protofile.type
+      case protofile.type.to_s
       when "copy_file"
         copy_file protofile.source, protofile.target
       when "directory"
