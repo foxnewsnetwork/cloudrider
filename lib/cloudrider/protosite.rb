@@ -30,6 +30,7 @@ class Cloudrider::Protosite
       p.domain_names = symbolized_hash[:domain_names]
       p.theme = symbolized_hash[:theme]
       p.layout = symbolized_hash[:layout]
+      p.squash_api_key = symbolized_hash[:squash_api_key]
       p.pages = symbolized_hash[:pages].to_a.map { |page_hash| Protopage.new page_hash.symbolize_keys }
     end
   end

@@ -26,8 +26,11 @@ class Cloudrider::BackendCommander
   def _database
     [Cloudrider::Serverside::DatabaseYaml]
   end
+  def _squash
+    [Cloudrider::Serverside::SquashRuby]
+  end
   def _configs
-    _nginx + _unicorn + _database
+    _nginx + _unicorn + _database + _squash
   end
   def _related_backends
     case _backend_name
@@ -39,6 +42,8 @@ class Cloudrider::BackendCommander
       _unicorn
     when "database"
       _database
+    when "squash"
+      _squash
     else
       raise UnknownOrUnimplmenetedVarisset, _backend_name
     end
@@ -52,5 +57,5 @@ class Cloudrider::BackendCommander
   def _backend_name
     @params[:name]
   end
-  KnownBackends = ["configs", "nginx", "unicorn", "database"]
+  KnownBackends = ["configs", "nginx", "unicorn", "database", "squash"]
 end
