@@ -4,8 +4,9 @@ class Apiv1.ApplicationRoute extends Ember.Route
     @disconnectOutlet
       outlet: 'modal'
       parentView: 'application'
-  modalModelFor: (modalName) ->
-    @store.createRecord("adminSession") if modalName is "login"
+  sessionify: (someObject) ->
+    return someObject if someObject.destroyRecord
+    @store.push "adminSession", id: someObject.get("id")
   actions:
     displayModal: (modalName) ->
       $(".modal-background").show()
@@ -13,6 +14,13 @@ class Apiv1.ApplicationRoute extends Ember.Route
         into: 'application'
         outlet: 'modal'
         model: @modalModelFor modalName
+    logoutUser: ->
+      return Apiv1.Flash.register "warning", "you're not even logged in", 4000 if Ember.isBlank Apiv1.CurrentUserSession
+      @sessionify(Apiv1.CurrentUserSession).destroyRecord().then =>
+        Apiv1.Flash.register "success", "you've been signed out, refreshing page", 4000
+        @transitionTo "index"
+        $(".application-container").hide "fade"
+        $("#now-loading").show "fade", 400, -> window.location.reload()
     closeModal: ->
       @disconnectModal()
     willTransition: ->

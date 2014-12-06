@@ -1,6 +1,8 @@
 class Apiv1.IndexController extends Ember.ObjectController
   queryParams: ['anchor']
-  anchor: null
+  anchor: ""
+  query: ""
+  activeTaxons: []
 
   +observer anchor
   scroll2Anchor: ->
@@ -17,3 +19,18 @@ class Apiv1.IndexController extends Ember.ObjectController
     p2 = el$.position()
     return unless p1? and p2?
     p2.top - p1.top
+
+  +observer activeTaxons.@each.id
+  manageATI: ->
+    return if Ember.isBlank @activeTaxons
+    qp = { page: 1, per: 15, query: @query, ati: @activeTaxons.mapBy("id") }
+    @transitionToRoute "products.index", queryParams: qp
+
+  actions:
+    search: (params) ->
+      @transitionToRoute "products.index",
+        queryParams:
+          page: 1
+          per: 15 
+          query: params.searchQuery
+          ati: params.activeTaxons.mapBy "id"

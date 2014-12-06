@@ -2,24 +2,34 @@ class Apiv1.ProductsIndexController extends Ember.ObjectController
   queryParams: ["per", "page", "query", "ati"]
   per: 15
   page: 1
-  query: null
-  ati: []
+  query: ""
+  ati: ""
+  
+  +computed model.activeTaxons.@each
+  activeTaxons: -> @model.activeTaxons
 
-  +computed model.taxons.@each.parentId
-  taxons: -> @get("model.taxons")
+  +observer activeTaxons.@each.id
+  manageATI: ->
+    return if Ember.isBlank @activeTaxons
+    qp = _.extend { query: @query }, @searchParams
+    @transitionToRoute "products.index", queryParams: qp
+
+  +computed Apiv1.PreloadedTaxons.@each.parentId
+  taxons: -> Apiv1.PreloadedTaxons.rejectBy "parentId"
 
   +computed products.content.meta
   metadatum: -> @get("products.content.meta")
 
-  +computed ati.@each, query, per, page
-  products: -> 
-    @store.find("product", taxons: @ati, query: @query, per: @per, page: @page)
+  +computed model.products
+  products: -> @model.products
 
-  +computed searchParams.searchQuery
-  searchQuery: -> @get "searchParams.searchQuery"
+  +computed page, per, activeTaxons.@each.id
+  searchParams: ->
+    page: @page
+    per: @per
+    ati: @activeTaxons.mapBy("id")
 
   actions:
-    search: (opts) ->
-      @page = 1
-      @query = opts.searchQuery
-      @ati = opts.activeTaxons.mapBy "id"
+    search: (opts)->
+      qp = _.extend { query: opts.searchQuery }, @searchParams
+      @transitionToRoute "products.index", queryParams: qp

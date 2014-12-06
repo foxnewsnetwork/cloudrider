@@ -1,0 +1,11 @@
+<% case field_style %>
+<% when :lastfm %>
+each tag in tags
+  .taggable-field-tag
+    .centered-fully
+      span.colon= tag.taxonName
+      span= tag.id
+Ember.TextField class="taggable-textfield" value=text
+<% when :exhentai %>
+Ember.TextField class="taggable-textfield" value=text
+<% end %>

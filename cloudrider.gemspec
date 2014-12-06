@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "functional_support", '>=0.0.12'
   spec.add_dependency "tilt", ">=1.4"
   spec.add_dependency "activesupport", '>=3'
+  spec.add_dependency "arrows", ">=0.0.2"
 end
