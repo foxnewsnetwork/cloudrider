@@ -11,7 +11,7 @@
         legend.capitalize.bold 
           tr-span en="new listing"
 
-        == partial "users/products/form-core"
+        == partial "admin/products/form-core"
         
         .input-section attr-name="showcaseOrder"
           label.form-label

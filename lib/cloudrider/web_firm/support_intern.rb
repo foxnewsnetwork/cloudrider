@@ -81,7 +81,10 @@ class Cloudrider::WebFirm::SupportIntern < Cloudrider::WebFirm::Slave
       "tree-taxon-li",
       "tree-taxon-ul",
       "preload-billboard",
-      "tree-taxon-wrapper"
+      "tree-taxon-wrapper",
+      "pictures-group",
+      "picture-chunk",
+      "offers-summary"
     ].each do |component|
       _copy_file "app/assets/javascripts/templates/components/#{component}.emblem", "app/assets/javascripts/templates/components/#{component}.emblem"
     end
@@ -101,7 +104,9 @@ class Cloudrider::WebFirm::SupportIntern < Cloudrider::WebFirm::Slave
       "select-locale",
       "type-ahead",
       "preload-billboard",
-      "tree-taxon-wrapper"].each do |file|
+      "tree-taxon-wrapper",
+      "pictures-group",
+      "offers-summary"].each do |file|
       _copy_file "app/assets/stylesheets/apiv1/components/_#{file}.css.scss", "app/assets/stylesheets/apiv1/components/_#{file}.css.scss"
     end
   end

@@ -63,7 +63,7 @@ class Cloudrider::ApplicationCommander
     [Cloudrider::Apiv1::SiteFooterComponent, Cloudrider::Apiv1::SiteFooterSass]
   end
   def _offers_new
-    [Cloudrider::Apiv1::OffersNewEmblem]
+    [Cloudrider::Apiv1::OffersNewEmblem, Cloudrider::Apiv1::OffersAnonymousFormPartial, Cloudrider::Apiv1::OffersFormPartial]
   end
   def _product_show
     [Cloudrider::Apiv1::ProductShowEmblem]
