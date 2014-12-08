@@ -19,6 +19,7 @@ class Cloudrider::WebFirm::ScumbagEngineer < Cloudrider::WebFirm::Slave
     _copy_file "config/initializers/i18n_backend.rb", "config/initializers/i18n_backend.rb"
     _copy_file "Gemfile", "Gemfile"
     _copy_file ".gitignore", ".gitignore"
+    _directory "test", "test"
     _push_protofile *_backend_commander.files_to_write
   end
 

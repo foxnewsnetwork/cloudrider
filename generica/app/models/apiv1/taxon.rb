@@ -16,11 +16,6 @@
 class Apiv1::Taxon < ActiveRecord::Base
   Fields = [:taxon_name, :explanation, :parent_id]
   class << self
-    def belonging_to(*products)
-      return [] if products.blank?
-      relationships = Apiv1::Listings::TaxonRelationship.belonging_to(*products)
-      where id: relationships.map(&:taxon_id)
-    end
     def find_by_permalink_genus(str, genus)
       permalink = Apiv1::Permalinkifier.permalinkify str
       by_root_genus(genus).by_permalink(permalink).first
@@ -55,9 +50,6 @@ class Apiv1::Taxon < ActiveRecord::Base
     :permalink,
     presence: true
 
-  validates :taxon_name,
-    format: { with: /[a-z0-9 \-_\(\)#@]+/i, message: "only allow letters and numbers" }
-
   scope :children_of_parent,
     -> (p_id) { where "#{self.table_name}.parent_id = ?", p_id } 
 
@@ -81,7 +73,7 @@ class Apiv1::Taxon < ActiveRecord::Base
   end
 
   def listings
-    Apiv1::Product.belonging_to_taxon self
+    Apiv1::Product.union_of_taxon_ids self.id
   end
 
   def to_ember_hash

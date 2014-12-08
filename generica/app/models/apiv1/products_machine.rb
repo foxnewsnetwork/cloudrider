@@ -6,12 +6,6 @@ class Apiv1::ProductsMachine
   def products
     @products ||= _filter_pipeline.call Apiv1::Product
   end
-  def pictures
-    @pictures ||= Apiv1::Picture.belonging_to *products
-  end
-  def taxons
-    @taxons ||= Apiv1::Taxon.belonging_to *products
-  end
   def meta_hash
     {
       page: _page,
@@ -30,6 +24,8 @@ class Apiv1::ProductsMachine
     lambda do |product|
       if _query.present?
         _cached_elasticsearch_product_query product
+      elsif _user.present?
+        _user.products
       else
         product
       end
@@ -60,6 +56,9 @@ class Apiv1::ProductsMachine
   end
   def _unify_type
     -> (t) { t.respond_to?(:records) ? t.records.load : t }
+  end
+  def _user
+    Admin::User.find_by_id params[:user_id]
   end
   def _query
     params[:query]

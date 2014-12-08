@@ -11,12 +11,6 @@
 #
 
 class Apiv1::Listings::TaxonRelationship < ActiveRecord::Base
-  class << self
-    def belonging_to(*listings)
-      return [] if listings.blank?
-      where listing: listings
-    end
-  end
   self.table_name = 'apiv1_listings_taxons'
   belongs_to :listing,
     polymorphic: true
