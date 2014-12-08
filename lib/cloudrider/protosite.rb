@@ -12,7 +12,7 @@
 
 class Cloudrider::Protosite
   KnownPages = [:index, :products_index, :product_show, :about_us, :contact_us, :offers_new]
-  KnownFunctionalities = [:admin_panel, :user_accounts, :offerable_products, :categorizable_products]
+  KnownFunctionalities = [:admin_panel, :user_accounts, :public_offer, :categorizable_products]
   KnownThemes = [:craigslist, :material, :amateur, :girly, :flat]
   KnownLayouts = [
     "full-width, triple-column", # https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-1-559d4e805cda?hn=1 wikipedia redesign
@@ -31,10 +31,20 @@ class Cloudrider::Protosite
       p.theme = symbolized_hash[:theme]
       p.layout = symbolized_hash[:layout]
       p.squash_api_key = symbolized_hash[:squash_api_key]
+      p.functionalities = symbolized_hash[:functionalities]
       p.pages = symbolized_hash[:pages].to_a.map { |page_hash| Protopage.new page_hash.symbolize_keys }
     end
   end
   attr_accessor :pages, :functionalities, :theme, :project_name, :domain_names, :layout
+
+  def public_offer?
+    functionalities.include?("public_offer") && pages.any? { |page| page.name == "offers_new" }
+  end
+
+  def private_offer?
+    !functionalities.include?("public_offer") && pages.any? { |page| page.name == "offers_new" }
+  end
+
 end
 
 class Cloudrider::Protosite::Protopage

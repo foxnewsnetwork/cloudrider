@@ -1,0 +1,26 @@
+{
+  "project_name": "craigslist inspired market",
+  "domain_names": ["www.craigslist-clone.com", "craigslist-clone.com"],
+  "squash_api_key": "666-6235lksdfsd",
+  "pages": [
+    {
+      "name": "index",
+      "components": ["products-showcase", "product-display", "search-and-filter"]
+    },
+    {
+      "name": "products_index",
+      "components": ["products-catalog", "product-listing", "search-and-filter"]
+    },
+    {
+      "name": "product_show",
+      "components": ["offers-overview"]
+    },
+    {
+      "name": "offers_new",
+      "components": []
+    }
+  ],
+  "functionalities": ["admin_panel", "user_accounts", "public_offer", "categorizable_products"],
+  "theme": "craigslist",
+  "layout": "mixed-width, hero-narrow"
+}

@@ -64,6 +64,8 @@
               span.parantheses
                 tr-span en="the first picture will be displayed in the showcase"
             files-field name="pictures" files=adminProduct.pictures class="form-control upload-control"
+          .attached-pictures
+            pictures-group pictures=adminProduct.pictures
 
     .small-12.columns
       fieldset

@@ -19,7 +19,13 @@ class Cloudrider::Apiv1::ProductShowEmblem < Cloudrider::Apiv1::Base
   end
   def _context
     Context.new.tap do |c|
-      c.show_style = @style
+      if @protosite.public_offer?
+        c.show_style = "public_market" 
+      elsif @protosite.private_offer?
+        c.show_style = "private_market"
+      else
+        c.show_style = "no_market"
+      end
     end
   end
 end

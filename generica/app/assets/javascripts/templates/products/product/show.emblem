@@ -69,3 +69,28 @@
         each attachment in product.attachments
           a href=attachment.fileUrl
             span.spacebar= attachment.fileName
+
+  .row
+    .small-6.columns
+      link-to "products.product.offers.new" product.id class="action"
+        tr-span en="Make public offer"      
+    .small-6.columns
+      .action
+        tr-span en="Directly contact seller to make a private offer"
+      .contact-info
+        .company
+          span.bold.colon
+            tr-span en="seller"
+          span= product.user.companyName
+        .email
+          span.bold.colon
+            tr-span en="email"
+          span= product.user.email
+        .phone
+          span.bold.colon
+            tr-span en="phone"
+          span= product.user.phoneNumber
+
+  .row
+    .small-12.columns
+      offers-summary offers=product.offers
