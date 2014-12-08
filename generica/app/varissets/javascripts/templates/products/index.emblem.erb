@@ -1,13 +1,24 @@
 <% case theme %>
 <% when :craigslist %>
-search-and-filter taxons=taxons action="search"
+search-and-filter taxons=taxons action="search" tempLocked=products.isPending
+  p.taxoncrumbs
+    each taxon in activeTaxons
+      span.spacebar
+        span +
+        span= taxon.taxonName
   fancy-paginator page=page per=per metadatum=metadatum
 
   products-catalog products=products
 
   fancy-paginator page=page per=per metadatum=metadatum
 <% else %>
-search-and-filter taxons=taxons action="search"
+search-and-filter taxons=taxons action="search" tempLocked=products.isPending
+
+p.taxoncrumbs
+  each taxon in activeTaxons
+    span.spacebar
+      span +
+      span= taxon.taxonName
 
 fancy-paginator page=page per=per metadatum=metadatum
 

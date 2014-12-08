@@ -69,6 +69,7 @@ class Apiv1.TreeTaxonLiComponent extends Ember.Component
       @taxon.destroyRecord().then -> Apiv1.Flash.register "success", "taxon destroyed", 2000
 
     interactWithTaxon: ->
+      return if @tempLocked
       if @taxon.hasChildren
         @toggleExpansion()
       else

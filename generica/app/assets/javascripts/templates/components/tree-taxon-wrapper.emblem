@@ -1,3 +1,3 @@
 h2.wrapper-title
   tr-span en="categories"
-tree-taxon-ul rootTaxon=rootTaxon activeTaxons=activeTaxons adminMode=adminMode
+tree-taxon-ul rootTaxon=rootTaxon activeTaxons=activeTaxons adminMode=adminMode tempLocked=tempLocked
