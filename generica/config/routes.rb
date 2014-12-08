@@ -22,6 +22,19 @@ Rails.application.routes.draw do
     resources :i18n_translations, only: [:index], controller: 'i18n_translations/index'
     resources :messages, only: [:create], controller: 'messages/create'
     resources :messages, only: [:index], controller: 'messages/index'
+    resources :users, only: [:create], controller: 'users/create'
+    resources :users, only: [:show], controller: 'users/show'
+    resources :offers, only: [:create], controller: 'offers/create'
+    resources :offers, only: [:show], controller: 'offers/show'
+    resources :offers, only: [:destroy], controller: 'offers/destroy'
+    resources :offers, only: [:index], controller: 'offers/index'
+  end
+
+  namespace :users do
+    resources :users_offers, only: [:create], controller: 'offers/create'
+
+    resources :users_products, only: [:create], controller: 'products/create'
+    resources :users_products, only: [:update], controller: 'products/update'
   end
 
   namespace :admin do
@@ -34,5 +47,6 @@ Rails.application.routes.draw do
     resources :taxons, only: [:update], controller: 'taxons/update'
 
     resources :admin_sessions, only: [:create], controller: 'sessions/create'
+    resources :admin_sessions, only: [:destroy], controller: 'sessions/destroy'
   end
 end

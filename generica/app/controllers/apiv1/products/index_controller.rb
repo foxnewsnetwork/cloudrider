@@ -4,10 +4,10 @@ class Apiv1::Products::IndexController < Apiv1::HomeController
   end
   private
   def _pictures_hash
-    _products_machine.pictures.map &:to_ember_hash
+    _products.map(&:pictures).flatten.map(&:to_ember_hash)
   end
   def _taxons_hash
-    _products_machine.taxons.map &:to_ember_hash
+    _products.map(&:taxons).flatten.map(&:to_ember_hash)
   end
   def _products_hash
     _products.map &:to_ember_hash
