@@ -17,8 +17,13 @@
       width: 66%;
     }
   }
-  img.product-image {
-    min-height: 275px;
+  .product-image {
+    width: 125px;
+    height: 125px;
+    background: {
+      size: cover;
+      position: center center;
+    }
   }
   .product-title {
     font-size: 2rem;

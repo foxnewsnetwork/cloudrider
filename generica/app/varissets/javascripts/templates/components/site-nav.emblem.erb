@@ -5,8 +5,18 @@
     .space-between
       link-to "index" class="button-like"
         span <%= my_company_name %>
-      a.pointer.button-like click="displayModal 'login'"
-        tr-span en="my account"
+      if adminLoggedIn
+        link-to "admin.index"
+          tr-span en="admin"
+
+      if userLoggedIn
+        link-to "users.index" class="button-like"
+          tr-span en="my account"
+      
+      if notLoggedIn
+        a.pointer.button-like click="displayModal 'login'"
+          tr-span en="login or register"
+
 <% when :left %>
 .nav-button
   link-to "index" (query-params anchor="") class="side-nav"

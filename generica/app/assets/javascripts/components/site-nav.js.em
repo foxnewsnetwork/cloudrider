@@ -24,6 +24,21 @@ class Apiv1.SiteNavComponent extends Ember.Component
     $("#page-wrapper").unbind "touchmove"
     $("#page-wrapper").unbind "scroll"
 
+  +computed Apiv1.CurrentUserSession.id
+  userLoggedIn: -> 
+    get$ Apiv1, "CurrentUserSession.id"
+
+  +computed userLoggedIn
+  notLoggedIn: ->
+    not @userLoggedIn
+
+  +computed Apiv1.CurrentUserSession.data
+  user: -> Apiv1.HashEx.camelize get$(Apiv1, "CurrentUserSession.data")
+
+  +computed user.userRank, userLoggedIn
+  adminLoggedIn: ->
+    @userLoggedIn and @get("user.userRank") is "admin"
+    
   actions:
     displayModal: (modal) ->
       @sendAction 'action', modal

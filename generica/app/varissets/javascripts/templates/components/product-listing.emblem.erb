@@ -3,29 +3,36 @@
 if product
   link-to "products.product.show" product.id class="product-header"
     .media-object
-      img.product-image.th src=product.pictures.firstObject.thumbUrl
+      .product-image.th style=productImageStyle
     .media-texts
       .big-title
         tr-span en=product.material
-        if product.quality
-          span.predash
-            tr-span en=product.quality
-        span.right
-          if product.hasShowOrder
-            span #
-            span.spacebar= product.showcaseOrder
+        if product.sku
+          span.predash= product.sku
 
-      .smaller-details
+      p.smaller-details
         if product.price
           span= product.price
         if product.place
-          span @
+          span.decent-prespace @
           tr-span en=product.place
-  
-      if product.taxons
-        .taxon-tags
-          each taxon in product.taxons
-            span.tag= taxon.taxonName
+        if product.amount
+          span.upcase.colon.decent-prespace
+            tr-span en="quantity"
+          span.spec.spacebar= product.amount
+        if product.price
+          span.upcase.colon.decent-prespace
+            tr-span en="price"
+          span.spec.spacebar= product.price
+        if product.place
+          span.upcase.colon.decent-prespace
+            tr-span en="origin"
+          span.spec.spacebar= product.place
+        if product.quality
+          span.upcase.colon.decent-prespace
+            tr-span en="quality"
+          span.spec.spacebar= product.quality
+      
 else
   .product-header
     .media-object
@@ -35,4 +42,5 @@ else
         tr-span en="no results"
       .product-summary
         tr-span en="or perhaps there are no products to load yet"
+
 <% end %>

@@ -3,7 +3,7 @@
 if product
   .media-object
     link-to "products.product.show" product.id
-      img.product-image src=product.pictures.firstObject.picUrl
+      .product-image style=productImageStyle
   .media-texts
     link-to "products.product.show" product.id class="product-title"
       tr-span en=product.material
@@ -27,48 +27,41 @@ else
 
 <% when :media_one %>
 if product
-  .media-object
-    link-to "products.product.show" product.id
-      img.product-image src=product.pictures.firstObject.picUrl
-  .media-texts
-    h2.product-title
-      link-to "products.product.show" product.id
+  link-to "products.product.show" product.id class="flex-start"
+    .media-object
+      .product-image style=productImageStyle
+    .media-texts
+      .product-title
+        i.fa.fa-star
         tr-span en=product.material
         if product.sku
           span.predash= product.sku
-    if product.taxons
-      .taxon-tags
-        each taxon in product.taxons
-          span.tag= taxon.taxonName
-    if product.others
-      p.product-summary
-        tr-span en=product.others
-    if product.attachments
-      p.related-files
-        each attachment in product.attachments
-          a href=attachment.fileUrl
-            span.spacebar= attachment.fileName
-    dl.product-specs
-      if product.amount
-        dt.upcase 
-          tr-span en="quantity"
-        dd
-          span.spacebar= product.amount
-      if product.price
-        dt.upcase 
-          tr-span en="price"
-        dd
-          span= product.price
-      if product.place
-        dt.upcase 
-          tr-span en="location"
-        dd
-          span= product.place
-      if product.quality
-        dt.upcase 
-          tr-span en="quality"
-        dd
-          span= product.quality
+      
+      .product-specs
+        if product.amount
+          .line
+            span.upcase.colon
+              tr-span en="quantity"
+            span.spec.spacebar= product.amount
+        if product.price
+          .line
+            span.upcase.colon
+              tr-span en="price"
+            span.spec.spacebar= product.price
+        if product.place
+          .line
+            span.upcase.colon
+              tr-span en="origin"
+            span.spec.spacebar= product.place
+        if product.quality
+          .line
+            span.upcase.colon
+              tr-span en="quality"
+            span.spec.spacebar= product.quality
+      if product.taxons
+        .taxon-tags
+          each taxon in product.taxons
+            span.tag= taxon.taxonName
 else
   .media-object.align-right
     i.fa.fa-circle-o.fa-4x
@@ -77,5 +70,6 @@ else
       tr-span en="no results"
     p.product-summary
       tr-span en="or perhaps there are no products to load yet"
+
 <% when :square_tiles %>
 <% end %>
