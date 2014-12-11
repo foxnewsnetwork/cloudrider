@@ -7,7 +7,7 @@ class Apiv1.ModalsRegisterController extends Ember.ObjectController
   user: -> @model
 
   redirectToIndex: ->
-    @transitionToRoute 'users.index'
+    @send "displayModel", "fork"
   notifySuccess: ->
     Apiv1.Flash.register "success", "account created!", 4000
   successfulSave: (user) ->
