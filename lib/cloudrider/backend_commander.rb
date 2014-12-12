@@ -29,8 +29,11 @@ class Cloudrider::BackendCommander
   def _squash
     [Cloudrider::Serverside::SquashRuby]
   end
+  def _schedule
+    [Cloudrider::Serverside::ScheduleRuby]
+  end
   def _configs
-    _nginx + _unicorn + _database + _squash
+    _nginx + _unicorn + _database + _squash + _schedule
   end
   def _related_backends
     case _backend_name
@@ -44,6 +47,8 @@ class Cloudrider::BackendCommander
       _database
     when "squash"
       _squash
+    when "schedule"
+      _schedule
     else
       raise UnknownOrUnimplmenetedVarisset, _backend_name
     end
